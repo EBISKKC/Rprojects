@@ -4,7 +4,7 @@
 
 ## Rの起動方法
 コンソールで
-```
+```bash
 R
 ```
 と打てば起動できる。
@@ -21,4 +21,9 @@ rmarkdown::render("test.Rmd")
 
 ```bash
 Rscript -e 'rmarkdown::render("test.Rmd")'
+```
+
+これでrのコードを動かすことができる。
+```bash
+Rscript test.r
 ```
