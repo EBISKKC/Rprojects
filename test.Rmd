@@ -1,0 +1,28 @@
+---
+title: "RMarkdownテストレポート"
+author: "戎 真吾"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: true
+mainfont: "Hiragino Sans"
+---
+
+# はじめに
+
+このドキュメントは、**コードと図**の両方を含むPDFを出力するためのテストです。
+
+# Rコードの例
+
+以下は `iris` データの構造を表示するコードです。
+
+```{r}
+str(iris)
+
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() +
+  labs(title = "アヤメの花の散布図", x = "がく片の長さ", y = "がく片の幅")
+
+```

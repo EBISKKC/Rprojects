@@ -1,0 +1,8 @@
+# Ignore PDF files
+*.pdf
+
+# Ignore command history files
+.Rhistory
+
+# Ignore .tes files
+*.tex
