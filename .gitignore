@@ -8,4 +8,7 @@
 *.tex
 
 # Ignore .log files
-.log
+*.log
+
+# Ignore .aux files
+*.aux
