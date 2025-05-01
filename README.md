@@ -27,3 +27,5 @@ Rscript -e 'rmarkdown::render("test.Rmd")'
 ```bash
 Rscript test.r
 ```
+
+作業するディレクトリをこのディレクトリの中で作ってファイルを管理していきましょう。
