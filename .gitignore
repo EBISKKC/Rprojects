@@ -6,3 +6,6 @@
 
 # Ignore .tes files
 *.tex
+
+# Ignore .log files
+.log
