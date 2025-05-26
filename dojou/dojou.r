@@ -18,7 +18,7 @@ print(head(data))
 library(ggplot2)
 p1 <- ggplot(data, aes(x = factor(USDA_SoilOrder), y = SOM_color, color = SOM_alkali)) +
   geom_jitter(width = 0.2, size = 3) +
-  labs(x = "USDA土壌区分", y = "SOM色", color = "SOMアルカリ", title = "USDA土壌区分ごとのSOM色とSOMアルカリ") +
+labs(x = "USDA Soil Order", y = "SOM color", color = "SOM alkali", title = "SOM color and SOM alkali by USDA Soil Order") +
   theme_minimal()
 print(p1)
 
@@ -28,7 +28,7 @@ data_long <- pivot_longer(data, cols = c(pH_H2O, pH_KCl), names_to = "pH_type", 
 p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type)) +
   geom_point(size = 3) +
   geom_line(aes(group = Name), alpha = 0.5) +
-  labs(x = "SOMアルカリ", y = "pH値", color = "pH種別", title = "SOMアルカリとpH値の関係") +
+labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values") +
   theme_minimal()
 print(p2)
 
@@ -39,6 +39,6 @@ p3 <- ggplot(data_box, aes(x = factor(USDA_SoilOrder), y = value, fill = factor(
   geom_boxplot(outlier.shape = NA, alpha = 0.7) +
   geom_jitter(width = 0.2, size = 1, alpha = 0.5) +
   facet_wrap(~variable, scales = "free_y") +
-  labs(x = "USDA土壌区分", y = "値", fill = "USDA土壌区分", title = "USDA土壌区分ごとの各項目比較") +
+labs(x = "USDA Soil Order", y = "Value", fill = "USDA Soil Order", title = "Comparison of Each Variable by USDA Soil Order") +
   theme_minimal()
 print(p3)
