@@ -1,38 +1,48 @@
-# データのインポートとグラフ描画
-# ファイルパスを指定
-file_path <- "gakujitsu2025data - シート1.csv"
+---
+title: "Soil Data Visualization Report"
+author: "ebisushingo"
+date: "2025-05-26"
+output: html_document
+---
 
-# データの読み込み
+# Introduction
+This report visualizes and explores the soil dataset (`gakujitsu2025data - シート1.csv`) using R and ggplot2. The analysis focuses on the relationships between soil order, SOM color, SOM alkali, pH, and various soil chemical properties.
+
+# Data Import
+```{r setup, message=FALSE, warning=FALSE}
 library(readr)
+library(ggplot2)
+library(tidyr)
+file_path <- "gakujitsu2025data - シート1.csv"
 data <- read_csv(file_path, locale = locale(encoding = "UTF-8"), show_col_types = FALSE)
-
-# 先頭列名が空の場合は削除（read_csvの仕様で...1列ができる場合があるため）
 if ("...1" %in% names(data)) {
   data <- data[ , !(names(data) %in% "...1")]
 }
+head(data)
+```
 
-# データの内容を確認
-print(head(data))
-
-# 可視化1: USDA_SoilOrderをx軸、SOM_colorをy軸、点の色をSOM_alkaliで表現
-library(ggplot2)
+# Visualization 1: SOM color and SOM alkali by USDA Soil Order
+```{r plot1}
 p1 <- ggplot(data, aes(x = factor(USDA_SoilOrder), y = SOM_color, color = SOM_alkali)) +
   geom_jitter(width = 0.2, size = 3) +
-labs(x = "USDA Soil Order", y = "SOM color", color = "SOM alkali", title = "SOM color and SOM alkali by USDA Soil Order") +
+  labs(x = "USDA Soil Order", y = "SOM color", color = "SOM alkali", title = "SOM color and SOM alkali by USDA Soil Order") +
   theme_minimal()
 print(p1)
+```
 
-# 可視化2: SOM_alkaliをx軸、pH_H2OとpH_KClをy軸に重ねて描画
-library(tidyr)
+# Visualization 2: pH_H2O and pH_KCl by SOM alkali
+```{r plot2}
 data_long <- pivot_longer(data, cols = c(pH_H2O, pH_KCl), names_to = "pH_type", values_to = "pH_value")
 p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type)) +
   geom_point(size = 3) +
   geom_line(aes(group = Name), alpha = 0.5) +
-labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values") +
+  labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values") +
   theme_minimal()
 print(p2)
+```
 
-# 可視化3: USDA_SoilOrderをx軸、複数項目をy軸として比較（箱ひげ図＋facet）
+# Visualization 3-1: deltapH, exH, CEC_eff, CEC_pot by USDA Soil Order
+```{r plot3-1}
 vars1 <- c("deltapH", "exH", "CEC_eff", "CEC_pot")
 data_box1 <- pivot_longer(data, cols = all_of(vars1), names_to = "variable", values_to = "value")
 p3_1 <- ggplot(data_box1, aes(x = factor(USDA_SoilOrder), y = value, fill = factor(USDA_SoilOrder))) +
@@ -42,7 +52,10 @@ p3_1 <- ggplot(data_box1, aes(x = factor(USDA_SoilOrder), y = value, fill = fact
   labs(x = "USDA Soil Order", y = "Value", fill = "USDA Soil Order", title = "Comparison of deltapH, exH, CEC_eff, CEC_pot by USDA Soil Order") +
   theme_minimal()
 print(p3_1)
+```
 
+# Visualization 3-2: CationSaturation, ExCa, ExMg, ExK by USDA Soil Order
+```{r plot3-2}
 vars2 <- c("CationSaturation", "ExCa", "ExMg", "ExK")
 data_box2 <- pivot_longer(data, cols = all_of(vars2), names_to = "variable", values_to = "value")
 p3_2 <- ggplot(data_box2, aes(x = factor(USDA_SoilOrder), y = value, fill = factor(USDA_SoilOrder))) +
@@ -52,7 +65,10 @@ p3_2 <- ggplot(data_box2, aes(x = factor(USDA_SoilOrder), y = value, fill = fact
   labs(x = "USDA Soil Order", y = "Value", fill = "USDA Soil Order", title = "Comparison of CationSaturation, ExCa, ExMg, ExK by USDA Soil Order") +
   theme_minimal()
 print(p3_2)
+```
 
+# Visualization 3-3: ExNa, Pabsorption by USDA Soil Order
+```{r plot3-3}
 vars3 <- c("ExNa", "Pabsorption")
 data_box3 <- pivot_longer(data, cols = all_of(vars3), names_to = "variable", values_to = "value")
 p3_3 <- ggplot(data_box3, aes(x = factor(USDA_SoilOrder), y = value, fill = factor(USDA_SoilOrder))) +
@@ -62,3 +78,13 @@ p3_3 <- ggplot(data_box3, aes(x = factor(USDA_SoilOrder), y = value, fill = fact
   labs(x = "USDA Soil Order", y = "Value", fill = "USDA Soil Order", title = "Comparison of ExNa, Pabsorption by USDA Soil Order") +
   theme_minimal()
 print(p3_3)
+```
+
+# Discussion
+The visualizations reveal several trends in the soil data:
+
+- **SOM color and SOM alkali**: There is a clear difference in SOM color and SOM alkali among different USDA Soil Orders. Andisol soils tend to have higher SOM alkali and darker SOM color, while Ultisol and Inceptisol show lower values.
+- **pH values**: The relationship between SOM alkali and pH (both H2O and KCl) shows that higher SOM alkali is generally associated with higher pH values, but the trend varies by soil type.
+- **Soil chemical properties**: Boxplots for deltapH, exH, CEC, cation saturation, and exchangeable cations show that Andisol soils generally have higher CEC and cation saturation, while other soil orders have lower values. ExNa and Pabsorption also vary by soil order, with some outliers present.
+
+Overall, the data suggest that soil order is a strong determinant of chemical properties, and that Andisol soils in particular have distinct characteristics compared to other orders in this dataset.
