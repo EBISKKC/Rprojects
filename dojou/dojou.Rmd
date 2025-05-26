@@ -82,10 +82,10 @@ print(p3_3)
 ```
 
 # Discussion
-The visualizations reveal several trends in the soil data:
+本レポートの可視化結果から、以下のような傾向が読み取れます。
 
-- **SOM color and SOM alkali**: There is a clear difference in SOM color and SOM alkali among different USDA Soil Orders. Andisol soils tend to have higher SOM alkali and darker SOM color, while Ultisol and Inceptisol show lower values.
-- **pH values**: The relationship between SOM alkali and pH (both H2O and KCl) shows that higher SOM alkali is generally associated with higher pH values, but the trend varies by soil type.
-- **Soil chemical properties**: Boxplots for deltapH, exH, CEC, cation saturation, and exchangeable cations show that Andisol soils generally have higher CEC and cation saturation, while other soil orders have lower values. ExNa and Pabsorption also vary by soil order, with some outliers present.
+- **SOM colorとSOM alkali**: USDA Soil OrderごとにSOM color（有機物色）とSOM alkali（有機物アルカリ性）に明確な違いが見られました。特にAndisol（アンドソル）はSOM alkaliが高く、SOM colorも濃い傾向があり、UltisolやInceptisolはこれらの値が低い傾向でした。
+- **pH値**: SOM alkaliとpH（pH_H2O, pH_KCl）の関係を見ると、SOM alkaliが高いほどpH値も高い傾向が見られましたが、土壌型によってその傾向には違いがありました。
+- **土壌化学性**: deltapH, exH, CEC, CationSaturation, 各種交換性カチオンの箱ひげ図から、AndisolはCECやカチオン飽和度が高い傾向があり、他の土壌型は低い傾向でした。ExNaやPabsorptionも土壌型ごとにばらつきがあり、一部に外れ値も見られました。
 
-Overall, the data suggest that soil order is a strong determinant of chemical properties, and that Andisol soils in particular have distinct characteristics compared to other orders in this dataset.
+以上より、土壌型（USDA Soil Order）は化学性の特徴を大きく左右する要因であり、特にAndisolは他の土壌型と比べて際立った性質を持つことが示唆されます。
