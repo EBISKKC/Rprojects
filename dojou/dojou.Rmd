@@ -33,10 +33,11 @@ print(p1)
 # Visualization 2: pH_H2O and pH_KCl by SOM alkali
 ```{r plot2}
 data_long <- pivot_longer(data, cols = c(pH_H2O, pH_KCl), names_to = "pH_type", values_to = "pH_value")
-p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type)) +
+p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type, label = USDA_SoilOrder)) +
   geom_point(size = 3) +
   geom_line(aes(group = Name), alpha = 0.5) +
-  labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values") +
+  geom_text(vjust = -0.7, size = 3, show.legend = FALSE) +
+  labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values (with soil name)") +
   theme_minimal()
 print(p2)
 ```
