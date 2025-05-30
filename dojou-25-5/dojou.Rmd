@@ -1,6 +1,6 @@
 ---
 title: "Soil Data Visualization Report"
-author: "ebisushingo"
+author: "学籍番号:2236401a 氏名:戎真吾"
 date: "2025-05-26"
 output: html_document
 ---
