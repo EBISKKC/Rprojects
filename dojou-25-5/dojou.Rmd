@@ -5,45 +5,69 @@ date: "2025-05-26"
 output: html_document
 ---
 
-![Soil Data Visualization Report](graph/dojou-r.png)
+<center>
+  <img src="graph/dojou-r.png" alt="Soil Data Visualization Report" width="60%"/>
+  <div style="font-size: 0.9em; color: #555;">図1. 土壌データ可視化レポート表紙</div>
+</center>
 
 ---
+
 # 目次
-- [1.各分析項目について]
-  - [1.1 背景]
-  - [1.2 結果]
-  - [1.3 考察]
-- [2.総合考察]
-- [3.感想]
+- [1. 各分析項目について](#1各分析項目について)
+  - [1.1 背景](#11-背景)
+  - [1.2 結果](#12-結果)
+  - [1.3 考察](#13-考察)
+- [2. 総合考察](#2総合考察)
+- [3. 感想](#3感想)
 
+---
 
-# 1.各分析項目について
+# 1. 各分析項目について
+
 ## 1.1 背景
+> 土壌は植物生産の基盤であり、その理化学性（色、pH、有機物、陽イオン交換容量、リン酸吸収係数など）は作物の生育や土地利用に大きく影響する。これらの性質を把握することで、土壌の肥沃度や保肥力、環境応答性などを評価できる。本実験では、さまざまな産地・土地利用条件の土壌を用いて、代表的な化学的性質を測定し、土壌ごとの特徴や農業生産における適性を考察することを目的とする。
 
-土壌は植物生産の基盤であり、その理化学性（色、pH、有機物、陽イオン交換容量、リン酸吸収係数など）は作物の生育や土地利用に大きく影響する。これらの性質を把握することで、土壌の肥沃度や保肥力、環境応答性などを評価できる。本実験では、さまざまな産地・土地利用条件の土壌を用いて、代表的な化学的性質を測定し、土壌ごとの特徴や農業生産における適性を考察することを目的とする。
+---
 
 ## 1.2 結果
-![4/22検量線](graph/4-22.png)
 
-<br>
+<center>
+  <img src="graph/4-22.png" alt="4/22検量線" width="50%"/>
+  <div style="font-size: 0.9em; color: #555;">図2. 4/22 検量線</div>
+</center>
 
-上記の検量線を用いて、リン酸吸収係数を求めた、リン酸吸収係数は*2358.235254*となった。
-リン酸アンモニウム液2.5%を作るための計算である。
+<div style="background-color:#f9f9f9; border-left:4px solid #007acc; padding:0.5em 1em; margin:1em 0;">
+上記の検量線を用いて、リン酸吸収係数を求めた。<br>
+<strong>リン酸吸収係数 = 2358.24</strong>
+</div>
 
-![4/23検量線](graph/4-23.png)
-<br>
+<p style="font-size:0.95em; color:#555;">※リン酸アンモニウム液2.5%を作るための計算</p>
 
-上記の検量線を用いて、リン酸吸収係数を求めた、リン酸吸収係数は*759.3170224*となった。
-<br>
+<center>
+  <img src="graph/4-23.png" alt="4/23検量線" width="50%"/>
+  <div style="font-size: 0.9em; color: #555;">図3. 4/23 検量線</div>
+</center>
+
+<div style="background-color:#f9f9f9; border-left:4px solid #007acc; padding:0.5em 1em; margin:1em 0;">
+上記の検量線を用いて、リン酸吸収係数を求めた。<br>
+<strong>リン酸吸収係数 = 759.32</strong>
+</div>
+
+---
 
 ## 1.3 考察
 
-実験結果から、私たちの班の試料は褐色森林土A層であることが判明した。褐色森林土A層は、主に落葉広葉樹林などの森林地帯に分布し、土色が褐色で、比較的有機物が豊富だが、黒ボク土ほどではないのが特徴である。今回測定したpHはやや酸性で、CEC（陽イオン交換容量）は中程度という結果だった。これは、森林土壌に見られる特徴と一致しており、農地と比べて塩基飽和度がやや低いことも確認できた。これらの性質は、落葉や有機物の分解、降雨による塩基流亡など、森林特有の環境要因が影響していると考えられる。また、リン酸吸収係数もやや高めであり、リンが固定されやすいことも褐色森林土の特徴を反映していた。
+> 実験結果から、私たちの班の試料は<strong>褐色森林土A層</strong>であることが判明した。褐色森林土A層は、主に落葉広葉樹林などの森林地帯に分布し、土色が褐色で、比較的有機物が豊富だが、黒ボク土ほどではないのが特徴である。今回測定したpHはやや酸性で、CEC（陽イオン交換容量）は中程度という結果だった。これは、森林土壌に見られる特徴と一致しており、農地と比べて塩基飽和度がやや低いことも確認できた。これらの性質は、落葉や有機物の分解、降雨による塩基流亡など、森林特有の環境要因が影響していると考えられる。また、リン酸吸収係数もやや高めであり、リンが固定されやすいことも褐色森林土の特徴を反映していた。
 
-# 2.総合考察
-This report visualizes and explores the soil dataset (`gakujitsu2025data - シート1.csv`) using R and ggplot2. The analysis focuses on the relationships between soil order, SOM color, SOM alkali, pH, and various soil chemical properties.
+---
 
-# Data Import
+# 2. 総合考察
+
+> This report visualizes and explores the soil dataset (`gakujitsu2025data - シート1.csv`) using R and ggplot2. The analysis focuses on the relationships between soil order, SOM color, SOM alkali, pH, and various soil chemical properties.
+
+---
+
+# データインポート
 ```{r setup, message=FALSE, warning=FALSE}
 library(readr)
 library(ggplot2)
@@ -56,7 +80,11 @@ if ("...1" %in% names(data)) {
 head(data)
 ```
 
-# Visualization 1: SOM color and SOM alkali by USDA Soil Order
+---
+
+# 可視化
+
+## Visualization 1: SOM color and SOM alkali by USDA Soil Order
 ```{r plot1}
 p1 <- ggplot(data, aes(x = factor(USDA_SoilOrder), y = SOM_color, color = SOM_alkali)) +
   geom_jitter(width = 0.2, size = 3) +
@@ -65,7 +93,7 @@ p1 <- ggplot(data, aes(x = factor(USDA_SoilOrder), y = SOM_color, color = SOM_al
 print(p1)
 ```
 
-# Visualization 2: pH_H2O and pH_KCl by SOM alkali
+## Visualization 2: pH_H2O and pH_KCl by SOM alkali
 ```{r plot2}
 data_long <- pivot_longer(data, cols = c(pH_H2O, pH_KCl), names_to = "pH_type", values_to = "pH_value")
 p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type, label = USDA_SoilOrder)) +
@@ -77,7 +105,7 @@ p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type, label
 print(p2)
 ```
 
-# Visualization 3-1: deltapH, exH, CEC_eff, CEC_pot by USDA Soil Order
+## Visualization 3-1: deltapH, exH, CEC_eff, CEC_pot by USDA Soil Order
 ```{r plot3-1}
 vars1 <- c("deltapH", "exH", "CEC_eff", "CEC_pot")
 data_box1 <- pivot_longer(data, cols = all_of(vars1), names_to = "variable", values_to = "value")
@@ -90,7 +118,7 @@ p3_1 <- ggplot(data_box1, aes(x = factor(USDA_SoilOrder), y = value, fill = fact
 print(p3_1)
 ```
 
-# Visualization 3-2: CationSaturation, ExCa, ExMg, ExK by USDA Soil Order
+## Visualization 3-2: CationSaturation, ExCa, ExMg, ExK by USDA Soil Order
 ```{r plot3-2}
 vars2 <- c("CationSaturation", "ExCa", "ExMg", "ExK")
 data_box2 <- pivot_longer(data, cols = all_of(vars2), names_to = "variable", values_to = "value")
@@ -103,7 +131,7 @@ p3_2 <- ggplot(data_box2, aes(x = factor(USDA_SoilOrder), y = value, fill = fact
 print(p3_2)
 ```
 
-# Visualization 3-3: ExNa, Pabsorption by USDA Soil Order
+## Visualization 3-3: ExNa, Pabsorption by USDA Soil Order
 ```{r plot3-3}
 vars3 <- c("ExNa", "Pabsorption")
 data_box3 <- pivot_longer(data, cols = all_of(vars3), names_to = "variable", values_to = "value")
@@ -116,15 +144,18 @@ p3_3 <- ggplot(data_box3, aes(x = factor(USDA_SoilOrder), y = value, fill = fact
 print(p3_3)
 ```
 
-# Discussion
-本レポートの可視化結果から、以下のような傾向が読み取れます。
+---
+
+# 考察まとめ
 
 - **SOM colorとSOM alkali**: USDA Soil OrderごとにSOM color（有機物色）とSOM alkali（有機物アルカリ性）に明確な違いが見られました。特にAndisol（アンドソル）はSOM alkaliが高く、SOM colorも濃い傾向があり、UltisolやInceptisolはこれらの値が低い傾向でした。
 - **pH値**: SOM alkaliとpH（pH_H2O, pH_KCl）の関係を見ると、SOM alkaliが高いほどpH値も高い傾向が見られましたが、土壌型によってその傾向には違いがありました。
 - **土壌化学性**: deltapH, exH, CEC, CationSaturation, 各種交換性カチオンの箱ひげ図から、AndisolはCECやカチオン飽和度が高い傾向があり、他の土壌型は低い傾向でした。ExNaやPabsorptionも土壌型ごとにばらつきがあり、一部に外れ値も見られました。
 
-以上より、土壌型（USDA Soil Order）は化学性の特徴を大きく左右する要因であり、特にAndisolは他の土壌型と比べて際立った性質を持つことが示唆されます。
+> 以上より、土壌型（USDA Soil Order）は化学性の特徴を大きく左右する要因であり、特にAndisolは他の土壌型と比べて際立った性質を持つことが示唆されます。
 
-# 3.感想
+---
 
-実験を通して、普段あまり意識していなかった土壌の多様性や、その理化学性が植物の生育に与える影響を実感することができた。操作方法や器具の扱いには細かな注意点が多く、正確な分析のためには丁寧な作業が求められることも学んだ。特に、pHやCECといった土壌の性質が数値として現れることで、それぞれの土壌の違いが具体的に理解でき、今後の農学の学びに活かせると感じた。
+# 3. 感想
+
+> 実験を通して、普段あまり意識していなかった土壌の多様性や、その理化学性が植物の生育に与える影響を実感することができた。操作方法や器具の扱いには細かな注意点が多く、正確な分析のためには丁寧な作業が求められることも学んだ。特に、pHやCECといった土壌の性質が数値として現れることで、それぞれの土壌の違いが具体的に理解でき、今後の農学の学びに活かせると感じた。
