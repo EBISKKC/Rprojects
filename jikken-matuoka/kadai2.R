@@ -19,7 +19,12 @@ for (i in seq(3, ncol(header_row3), by = 2)) {
 }
 
 colnames(df) <- col_names[1:ncol(df)]
-df_wide <- df[, -c(1, 2)] %>% na.omit()
+df_wide <- df[, -c(1, 2)]
+
+# すべての列を数値型に強制変換
+df_wide[] <- lapply(df_wide, function(x) as.numeric(as.character(x)))
+# 欠損値のある行を除去
+df_wide <- na.omit(df_wide)
 
 df_long <- df_wide %>%
   pivot_longer(
