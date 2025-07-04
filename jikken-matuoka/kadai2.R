@@ -23,8 +23,27 @@ df_wide <- df[, -c(1, 2)]
 
 # すべての列を数値型に強制変換
 df_wide[] <- lapply(df_wide, function(x) as.numeric(as.character(x)))
+
 # 欠損値のある行を除去
 df_wide <- na.omit(df_wide)
+
+# --- ハズレ値除去処理を追加 ---
+drop_outliers <- function(df) {
+  for (col in names(df)) {
+    x <- df[[col]]
+    Q1 <- quantile(x, 0.25, na.rm = TRUE)
+    Q3 <- quantile(x, 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    lower <- Q1 - 1.5 * IQR
+    upper <- Q3 + 1.5 * IQR
+    x[x < lower | x > upper] <- NA
+    df[[col]] <- x
+  }
+  df <- na.omit(df)
+  return(df)
+}
+df_wide <- drop_outliers(df_wide)
+# --- ここまで ---
 
 df_long <- df_wide %>%
   pivot_longer(

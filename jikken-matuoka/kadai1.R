@@ -39,6 +39,25 @@ df_wide[] <- lapply(df_wide, function(x) as.numeric(as.character(x)))
 # 欠損値のある行を除去
 df_wide <- na.omit(df_wide)
 
+# --- ハズレ値除去処理を追加 ---
+# 各列ごとに、四分位範囲(IQR)を使って外れ値を除去する関数
+drop_outliers <- function(df) {
+  for (col in names(df)) {
+    x <- df[[col]]
+    Q1 <- quantile(x, 0.25, na.rm = TRUE)
+    Q3 <- quantile(x, 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    lower <- Q1 - 1.5 * IQR
+    upper <- Q3 + 1.5 * IQR
+    x[x < lower | x > upper] <- NA
+    df[[col]] <- x
+  }
+  df <- na.omit(df)
+  return(df)
+}
+df_wide <- drop_outliers(df_wide)
+# --- ここまで ---
+
 # データを扱いやすいように「ワイド形式」から「ロング形式」に変換します
 df_long <- df_wide %>%
   pivot_longer(
