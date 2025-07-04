@@ -1,0 +1,39 @@
+---
+title: "課題レポート（野生種と栽培種の比較）"
+author: "ebisushingo"
+date: "2025-07-04"
+output: html_document
+---
+
+# 課題1: 形質の可視化と記述統計
+
+## 箱ひげ図
+
+```{r, echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics(list.files(pattern = "kadai1_boxplot_.*\\.png$", full.names = TRUE))
+```
+
+## ヒストグラム
+
+```{r, echo=FALSE, out.width='70%', fig.align='center'}
+knitr::include_graphics(list.files(pattern = "kadai1_histogram_.*\\.png$", full.names = TRUE))
+```
+
+## 記述統計量
+
+```{r, echo=FALSE}
+readr::read_csv("kadai1_summary_stats.csv")
+```
+
+# 課題2: t検定
+
+- 各形質について、野生種と栽培種の平均値の差に関してt検定を行いました。
+- 検定の4ステップ（仮説の設定、有意水準の設定、検定統計量の計算、意思決定）を明記しています。
+
+```{r, echo=FALSE}
+cat(readLines("kadai2_ttest_results.txt"), sep = "\n")
+```
+
+# 参考
+
+- コードはGitHubにあります: [https://github.com/EBISKKC/Rprojects.git](https://github.com/EBISKKC/Rprojects.git)
