@@ -17,7 +17,7 @@ colnames(df)[1] <- "個体番号"
 # 「個体番号」以外のカラム名を抽出し、不正なカラムを除外
 temp_cols <- setdiff(colnames(df), "個体番号")
 temp_cols <- temp_cols[temp_cols != "" & !is.na(temp_cols)]
-print(temp_cols)  # デバッグ用
+print(temp_cols) # デバッグ用
 
 # データをlong型に変換（tidyデータ化）
 df_long <- df %>%
