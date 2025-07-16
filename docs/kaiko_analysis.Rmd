@@ -1,0 +1,163 @@
+---
+title: "カイコ鼓動データ解析レポート"
+author: "ebisushingo"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    theme: united
+    highlight: tango
+  pdf_document:
+    toc: true
+    latex_engine: xelatex
+---
+
+# 概要
+
+本レポートでは、`data/sakamoto実験 - シート1.csv` のカイコ鼓動データを解析し、温度ごとの平均・標準偏差・グラフを作成します。
+
+df <- read.csv("../data/sakamoto実験 - シート1.csv", check.names = FALSE, skip = 4, header = TRUE)
+temp_cols <- setdiff(colnames(df), "個体番号")
+temp_cols <- temp_cols[temp_cols != "" & !is.na(temp_cols)]
+df_long <- df %>%
+df_long <- df_long %>% arrange(温度)
+# Data import and wrangling (Sheet 1 & 2)
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+# Sheet 1: skip 4 lines, header on 5th
+df <- read.csv("../data/sakamoto実験 - シート1.csv", check.names = FALSE, skip = 4, header = TRUE)
+colnames(df)[1] <- "個体番号"
+temp_cols <- setdiff(colnames(df), "個体番号")
+temp_cols <- temp_cols[temp_cols != "" & !is.na(temp_cols)]
+df_long <- df %>%
+  pivot_longer(
+    all_of(temp_cols),
+    names_to = "温度",
+    values_to = "鼓動回数"
+  ) %>%
+  mutate(
+    温度 = as.numeric(gsub("[^0-9.]", "", 温度)),
+    鼓動回数 = as.numeric(鼓動回数)
+  ) %>%
+  drop_na()
+df_long <- df_long %>% arrange(温度)
+
+# Sheet 2: skip 4 lines, header on 5th
+df2 <- read.csv("../data/sakamoto実験 - シート2.csv", check.names = FALSE, skip = 4, header = TRUE)
+colnames(df2)[1] <- "Individual"
+df2_long <- df2 %>%
+  pivot_longer(
+    -Individual,
+    names_to = "Closed_Spiracle",
+    values_to = "Beats_30sec"
+  ) %>%
+  mutate(
+    Beats_30sec = as.numeric(Beats_30sec)
+  ) %>%
+  drop_na()
+df2_long <- df2_long %>% arrange(Closed_Spiracle)
+```
+
+
+# Summary statistics by temperature (Sheet 1)
+
+```{r summary-stats}
+summary_stats <- df_long %>%
+  group_by(温度) %>%
+  summarise(
+    n = n(),
+    mean = mean(鼓動回数, na.rm = TRUE),
+    sd = sd(鼓動回数, na.rm = TRUE)
+  )
+colnames(summary_stats) <- c("Temperature", "N", "Mean", "SD")
+knitr::kable(summary_stats, caption = "Summary statistics by temperature (Sheet 1)")
+```
+
+# Summary statistics by closed spiracle (Sheet 2)
+
+```{r summary-stats2}
+summary_stats2 <- df2_long %>%
+  group_by(Closed_Spiracle) %>%
+  summarise(
+    n = n(),
+    mean = mean(Beats_30sec, na.rm = TRUE),
+    sd = sd(Beats_30sec, na.rm = TRUE)
+  )
+knitr::kable(summary_stats2, caption = "Summary statistics by closed spiracle (Sheet 2)")
+```
+
+
+# Mean and SD by temperature (Sheet 1)
+
+```{r plot-mean-sd, fig.width=7, fig.height=5}
+p <- ggplot(summary_stats, aes(x = Temperature, y = Mean)) +
+  geom_line(group = 1, color = "steelblue", size = 1.2) +
+  geom_point(size = 3, color = "steelblue") +
+  geom_errorbar(aes(ymin = Mean - SD, ymax = Mean + SD), width = 0.5, color = "orange") +
+  labs(
+    title = "Mean heartbeats per minute by temperature (Sheet 1)",
+    x = "Temperature (C)",
+    y = "Heartbeats per minute"
+  ) +
+  theme_minimal(base_size = 14)
+print(p)
+```
+
+# Mean and SD by closed spiracle (Sheet 2)
+
+```{r plot-mean-sd2, fig.width=7, fig.height=5}
+p3 <- ggplot(summary_stats2, aes(x = Closed_Spiracle, y = mean, group = 1)) +
+  geom_line(color = "darkred", size = 1.2) +
+  geom_point(size = 3, color = "darkred") +
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.5, color = "orange") +
+  labs(
+    title = "Mean heartbeats per 30 sec by closed spiracle (Sheet 2)",
+    x = "Closed spiracle",
+    y = "Heartbeats per 30 sec"
+  ) +
+  theme_minimal(base_size = 14)
+print(p3)
+```
+
+
+# Individual trajectories (Sheet 1)
+
+```{r plot-individual, fig.width=7, fig.height=5}
+df_long <- df_long %>%
+  rename(Individual = 個体番号, Temperature = 温度, Heartbeats = 鼓動回数)
+p2 <- ggplot(df_long, aes(x = Temperature, y = Heartbeats, group = Individual, color = Individual)) +
+  geom_line(alpha = 0.5) +
+  geom_point() +
+  labs(
+    title = "Individual heartbeats per minute by temperature (Sheet 1)",
+    x = "Temperature (C)",
+    y = "Heartbeats per minute"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+print(p2)
+```
+
+# Individual trajectories by closed spiracle (Sheet 2)
+
+```{r plot-individual2, fig.width=7, fig.height=5}
+p4 <- ggplot(df2_long, aes(x = Closed_Spiracle, y = Beats_30sec, group = Individual, color = Individual)) +
+  geom_line(alpha = 0.5) +
+  geom_point() +
+  labs(
+    title = "Individual heartbeats per 30 sec by closed spiracle (Sheet 2)",
+    x = "Closed spiracle",
+    y = "Heartbeats per 30 sec"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+print(p4)
+```
+
+# Discussion
+
+- How did heartbeats change as temperature increased?
+- How large was the individual variation?
+- Future directions for experiments and analysis
