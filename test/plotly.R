@@ -18,14 +18,14 @@ library(plotly)
 
 # plot_ly関数を使って3D散布図を作成
 fig_3d <- plot_ly(
-  iris, 
-  x = ~Sepal.Length, 
-  y = ~Sepal.Width, 
-  z = ~Petal.Length, 
+  iris,
+  x = ~Sepal.Length,
+  y = ~Sepal.Width,
+  z = ~Petal.Length,
   color = ~Species, # 品種(Species)で色分け
-  colors = c('#636EFA', '#EF553B', '#00CC96'), # 色の指定
+  colors = c("#636EFA", "#EF553B", "#00CC96"), # 色の指定
   type = "scatter3d", # グラフの種類
-  mode = "markers",   # 点でプロット
+  mode = "markers", # 点でプロット
   marker = list(size = 5, opacity = 0.8) # マーカーのサイズと透明度
 )
 
@@ -79,7 +79,7 @@ library(ggridges)
 fig_ridges <- ggplot(iris, aes(x = Sepal.Length, y = Species, fill = Species)) +
   geom_density_ridges(
     alpha = 0.7, # 透明度
-    scale = 0.9  # 各プロットの重なり具合を調整
+    scale = 0.9 # 各プロットの重なり具合を調整
   ) +
   scale_fill_viridis_d() + # 見やすいカラーパレットを適用
   labs(

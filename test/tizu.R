@@ -2,9 +2,11 @@
 
 
 # 必要なパッケージのリスト
-required_packages <- c("tidyverse", "gganimate", "gifski", "plotly", "GGally", 
-                       "ggridges", "leaflet", "highcharter", "patchwork", 
-                       "ggraph", "igraph")
+required_packages <- c(
+  "tidyverse", "gganimate", "gifski", "plotly", "GGally",
+  "ggridges", "leaflet", "highcharter", "patchwork",
+  "ggraph", "igraph"
+)
 
 # パッケージがインストールされているか確認し、されていなければインストール
 for (pkg in required_packages) {
@@ -14,17 +16,17 @@ for (pkg in required_packages) {
 }
 
 # 必要なライブラリをすべて読み込みます
-library(tidyverse)   # Tidyverse (ggplot2, dplyrなどを含む)
-library(gganimate)   # アニメーション
-library(gifski)      # GIF作成
-library(plotly)      # インタラクティブなグラフ
-library(GGally)      # ペアプロット
-library(ggridges)    # リッジラインプロット
-library(leaflet)     # インタラクティブな地図
+library(tidyverse) # Tidyverse (ggplot2, dplyrなどを含む)
+library(gganimate) # アニメーション
+library(gifski) # GIF作成
+library(plotly) # インタラクティブなグラフ
+library(GGally) # ペアプロット
+library(ggridges) # リッジラインプロット
+library(leaflet) # インタラクティブな地図
 library(highcharter) # インタラクティブなチャート
-library(patchwork)   # グラフの組み合わせ
-library(ggraph)      # ネットワーク図
-library(igraph)      # ネットワーク分析
+library(patchwork) # グラフの組み合わせ
+library(ggraph) # ネットワーク図
+library(igraph) # ネットワーク分析
 
 
 # 今回使用する都道府県データを作成します。
@@ -111,14 +113,14 @@ print(ridges_plot)
 # 人口、面積、所得の関係を3次元でインタラクティブに可視化します。
 # 右下のViewerペインでマウスでぐりぐり動かせます。
 plotly_3d_plot <- plot_ly(
-  pref_data, 
-  x = ~population_2023, 
-  y = ~area_km2, 
-  z = ~income_M_yen, 
-  color = ~region, 
+  pref_data,
+  x = ~population_2023,
+  y = ~area_km2,
+  z = ~income_M_yen,
+  color = ~region,
   text = ~prefecture, # マウスオーバーで県名を表示
-  hoverinfo = 'text+x+y+z',
-  type = "scatter3d", 
+  hoverinfo = "text+x+y+z",
+  type = "scatter3d",
   mode = "markers"
 ) %>% layout(
   title = "人口・面積・所得の3D散布図 (Plotly)",
@@ -137,10 +139,10 @@ leaflet_map <- leaflet(pref_data) %>%
   addTiles() %>%
   addCircleMarkers(
     lng = ~lon, lat = ~lat,
-    radius = ~sqrt(pop_density) / 5, # 人口密度の平方根で円の半径を調整
+    radius = ~ sqrt(pop_density) / 5, # 人口密度の平方根で円の半径を調整
     color = "tomato",
     stroke = FALSE, fillOpacity = 0.6,
-    popup = ~paste(prefecture, "<br>", "人口密度:", pop_density, "人/km2")
+    popup = ~ paste(prefecture, "<br>", "人口密度:", pop_density, "人/km2")
   ) %>%
   addControl("都道府県別 人口密度 (Leaflet)", position = "topright")
 print(leaflet_map)
@@ -187,16 +189,16 @@ gganim_plot <- ggplot(anim_data, aes(x = population, y = reorder(prefecture, pop
   geom_col(alpha = 0.8) +
   geom_text(aes(label = prefecture), hjust = 1.1, color = "white", size = 3) +
   labs(
-    title = '都道府県別 人口推移ランキング',
-    subtitle = 'Year: {frame_time}',
-    x = '人口 (万人)',
-    y = ''
+    title = "都道府県別 人口推移ランキング",
+    subtitle = "Year: {frame_time}",
+    x = "人口 (万人)",
+    y = ""
   ) +
   theme_minimal() +
   theme(axis.text.y = element_blank(), legend.position = "top") +
   # ここからがgganimateの魔法
   transition_time(year) +
-  ease_aes('linear') +
+  ease_aes("linear") +
   view_follow(fixed_y = TRUE) # y軸の表示範囲を固定
 
 # アニメーションを実行（GIFファイルが生成されます）
@@ -246,14 +248,12 @@ edges <- tribble(
   "静岡県", "愛知県",
   "愛知県", "三重県",
   "三重県", "滋賀県", "三重県", "京都府", "三重県", "奈良県", "三重県", "和歌山県",
-
   "滋賀県", "京都府",
   "京都府", "大阪府", "京都府", "兵庫県", "京都府", "奈良県",
   "大阪府", "兵庫県", "大阪府", "奈良県", "大阪府", "和歌山県",
   "兵庫県", "鳥取県", "兵庫県", "岡山県",
   "奈良県", "和歌山県",
   "鳥取県", "島根県", "鳥取県", "岡山県", "鳥取県", "広島県",
-
   "島根県", "広島県", "島根県", "山口県",
   "岡山県", "広島県", "岡山県", "香川県", # 瀬戸大橋
   "広島県", "山口県", "広島県", "愛媛県", # しまなみ海道
@@ -272,8 +272,8 @@ edges <- tribble(
 graph <- graph_from_data_frame(edges, directed = FALSE, vertices = pref_data)
 
 # ggraphで可視化
-ggraph_plot <- ggraph(graph, layout = 'manual', x = pref_data$lon, y = pref_data$lat) + 
-  geom_edge_fan(aes(alpha = 0.5), width = 0.5) + 
+ggraph_plot <- ggraph(graph, layout = "manual", x = pref_data$lon, y = pref_data$lat) +
+  geom_edge_fan(aes(alpha = 0.5), width = 0.5) +
   geom_node_point(aes(color = region), size = 5) +
   geom_node_text(aes(label = prefecture), repel = TRUE, size = 2.5) +
   theme_graph() +

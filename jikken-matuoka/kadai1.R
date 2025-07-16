@@ -18,12 +18,12 @@ header_row4 <- read.csv(file_path, skip = 3, nrows = 1, header = FALSE, fileEnco
 df <- read.csv(file_path, skip = 4, header = FALSE, fileEncoding = "UTF-8")
 
 # 2行に分かれているヘッダーを結合して、列名を生成します
-col_names <- c(as.character(header_row3[1,1]), as.character(header_row3[1,2]))
+col_names <- c(as.character(header_row3[1, 1]), as.character(header_row3[1, 2]))
 for (i in seq(3, ncol(header_row3), by = 2)) {
   base_name <- as.character(header_row3[1, i])
   if (!is.na(base_name) && base_name != "" && i + 1 <= ncol(header_row4)) {
     col_names <- c(col_names, paste(base_name, as.character(header_row4[1, i]), sep = "_"))
-    col_names <- c(col_names, paste(base_name, as.character(header_row4[1, i+1]), sep = "_"))
+    col_names <- c(col_names, paste(base_name, as.character(header_row4[1, i + 1]), sep = "_"))
   }
 }
 
@@ -81,7 +81,7 @@ for (trait in traits) {
     labs(title = paste(trait, "の比較"), x = "種", y = "値") +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5)) # タイトルを中央揃え
-  
+
   print(p)
   ggsave(paste0("/Users/ebisushingo/Desktop/Rprojects/jikken-matuoka/kadai1_boxplot_", make.names(trait), ".png"), plot = p, width = 6, height = 4)
 }
@@ -95,7 +95,7 @@ for (trait in traits) {
     labs(title = paste(trait, "のヒストグラム"), x = "値", y = "度数") +
     theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))
-    
+
   print(p)
   ggsave(paste0("/Users/ebisushingo/Desktop/Rprojects/jikken-matuoka/kadai1_histogram_", make.names(trait), ".png"), plot = p, width = 6, height = 5)
 }
@@ -104,13 +104,15 @@ for (trait in traits) {
 # 種(species)ごとにグループ化し、すべての量的形質について記述統計量を計算します
 summary_stats <- df_long %>%
   group_by(species) %>%
-  summarise(across(all_of(traits),
-                   list(
-                     平均 = ~mean(.x, na.rm = TRUE),
-                     中央値 = ~median(.x, na.rm = TRUE),
-                     分散 = ~var(.x, na.rm = TRUE),
-                     標準偏差 = ~sd(.x, na.rm = TRUE)
-                   )), .groups = 'drop')
+  summarise(across(
+    all_of(traits),
+    list(
+      平均 = ~ mean(.x, na.rm = TRUE),
+      中央値 = ~ median(.x, na.rm = TRUE),
+      分散 = ~ var(.x, na.rm = TRUE),
+      標準偏差 = ~ sd(.x, na.rm = TRUE)
+    )
+  ), .groups = "drop")
 
 # 計算結果をコンソールに出力します
 print("記述統計量:")

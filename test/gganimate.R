@@ -18,11 +18,11 @@ library(gganimate)
 p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
   geom_point(alpha = 0.7, size = 4) + # Plot points. Make them slightly transparent
   labs(
-    title = 'Iris Dataset: Sepal Length vs. Width',
-    subtitle = 'Sepal.Length: {frame_along}', # Subtitle that changes during animation
-    x = 'Sepal Length (cm)',
-    y = 'Sepal Width (cm)',
-    caption = 'Created with gganimate'
+    title = "Iris Dataset: Sepal Length vs. Width",
+    subtitle = "Sepal.Length: {frame_along}", # Subtitle that changes during animation
+    x = "Sepal Length (cm)",
+    y = "Sepal Width (cm)",
+    caption = "Created with gganimate"
   ) +
   theme_minimal(base_size = 14) + # Set a minimal theme
   theme(plot.title = element_text(face = "bold"))
@@ -30,9 +30,9 @@ p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
 # Add animation rules with gganimate
 anim <- p +
   # Reveal data along Sepal.Length
-  transition_reveal(Sepal.Length) + 
+  transition_reveal(Sepal.Length) +
   # Smooth the animation movement
-  ease_aes('linear') +
+  ease_aes("linear") +
   # Leave a trail of past points
   shadow_wake(wake_length = 0.1, alpha = FALSE)
 
@@ -41,5 +41,5 @@ anim <- p +
 # fps is frames per second
 animate(anim, nframes = 200, fps = 10, width = 800, height = 600, renderer = gifski_renderer("iris_animation.gif"))
 
-# Running the line above will save the GIF animation as "iris_animation.gif" 
+# Running the line above will save the GIF animation as "iris_animation.gif"
 # in your working directory.

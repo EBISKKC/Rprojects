@@ -8,7 +8,7 @@ data <- read_csv(file_path, locale = locale(encoding = "UTF-8"), show_col_types 
 
 # 先頭列名が空の場合は削除（read_csvの仕様で...1列ができる場合があるため）
 if ("...1" %in% names(data)) {
-  data <- data[ , !(names(data) %in% "...1")]
+  data <- data[, !(names(data) %in% "...1")]
 }
 
 # データの内容を確認
@@ -18,7 +18,7 @@ print(head(data))
 library(ggplot2)
 p1 <- ggplot(data, aes(x = factor(USDA_SoilOrder), y = SOM_color, color = SOM_alkali)) +
   geom_jitter(width = 0.2, size = 3) +
-labs(x = "USDA Soil Order", y = "SOM color", color = "SOM alkali", title = "SOM color and SOM alkali by USDA Soil Order") +
+  labs(x = "USDA Soil Order", y = "SOM color", color = "SOM alkali", title = "SOM color and SOM alkali by USDA Soil Order") +
   theme_minimal()
 print(p1)
 
@@ -28,7 +28,7 @@ data_long <- pivot_longer(data, cols = c(pH_H2O, pH_KCl), names_to = "pH_type", 
 p2 <- ggplot(data_long, aes(x = SOM_alkali, y = pH_value, color = pH_type)) +
   geom_point(size = 3) +
   geom_line(aes(group = Name), alpha = 0.5) +
-labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values") +
+  labs(x = "SOM alkali", y = "pH value", color = "pH type", title = "Relationship between SOM alkali and pH values") +
   theme_minimal()
 print(p2)
 

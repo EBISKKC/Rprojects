@@ -12,6 +12,166 @@ R
 ```
 と打てば起動できる。
 
+
+```bash
+# フォーマット・lintツールの一括インストール
+make deps
+
+# 個別にフォーマット実行
+make fmt
+
+# 個別にlint実行
+make lint
+```
+
+## データの中身を見る方法
+
+### 基本的なデータ確認コマンド
+```r
+# データフレームの最初の6行を表示
+head(data)
+
+# データフレームの最後の6行を表示
+tail(data)
+
+# データフレームの構造を表示
+str(data)
+
+# データフレームの要約統計量を表示
+summary(data)
+
+# データフレームの次元（行数、列数）を表示
+dim(data)
+
+# 列名を表示
+names(data)
+colnames(data)
+
+# データフレームの概要を表示
+glimpse(data)  # dplyrパッケージが必要
+```
+
+### CSVファイルの読み込みと確認
+```r
+# CSVファイルの読み込み
+data <- read.csv("ファイル名.csv")
+
+# データの確認
+head(data)
+str(data)
+summary(data)
+```
+
+### データの詳細確認
+```r
+# 欠損値の確認
+sum(is.na(data))
+colSums(is.na(data))
+
+# ユニークな値の数
+sapply(data, function(x) length(unique(x)))
+
+# データ型の確認
+sapply(data, class)
+```
+
+### ターミナルからのデータ確認
+```bash
+# CSVファイルの最初の数行を表示
+head -10 ファイル名.csv
+
+# CSVファイルの行数を確認
+wc -l ファイル名.csv
+
+# Rスクリプトでデータを確認
+Rscript -e 'data <- read.csv("ファイル名.csv"); str(data); summary(data)'
+```
+
+## Makefile コマンド
+
+プロジェクトにMakefileを追加したので、以下のコマンドで様々なタスクを実行できます：
+
+### 基本的なコマンド
+```bash
+# 利用可能なコマンド一覧を表示
+make help
+
+# 全てのRファイルをフォーマット（stylerが自動でインストールされる）
+make fmt
+
+# 全てのRファイルをlint（lintrが自動でインストールされる）
+make lint
+
+# フォーマットとlintを両方実行
+make check
+
+# プロジェクトに必要なパッケージをインストール
+make install
+
+# フォーマット・lintツールをインストール
+make deps
+```
+
+### 開発用コマンド
+```bash
+# 生成されたファイルを削除（PDF、HTML、aux、logなど）
+make clean
+
+# testディレクトリのRスクリプトを実行
+make test
+
+# 全てのRmdファイルをPDFに変換
+make render
+
+# R セッションを開始
+make serve
+```
+
+### 個別ファイル操作
+```bash
+# 特定のファイルをフォーマット
+make fmt-file FILE=test/gganimate.R
+
+# 特定のファイルをlint
+make lint-file FILE=test/gganimate.R
+
+# 特定のRスクリプトを実行
+make run FILE=test.r
+
+# 特定のRmdファイルをPDFに変換
+make render-file FILE=test.Rmd
+
+# CSVファイルの内容を確認（head、wc、Rでの要約表示）
+make check-data FILE=jikken-matuoka/matuoka.csv
+```
+
+### 推奨ワークフロー
+```bash
+# 1. 依存関係のインストール
+make deps
+make install
+
+# 2. 開発中のフォーマットとlintチェック
+make check
+
+# 3. テストの実行
+make test
+
+# 4. 不要ファイルの削除
+make clean
+```
+
+**注意**: 全てのMakefileコマンドはCRANミラーの問題を回避するために`repos = "https://cran.rstudio.com/"`を指定しています。
+
+これでrのコードを動かすことができる。
+```bash
+# 直接実行
+Rscript test.r
+
+# Makefileを使用して実行
+make run FILE=test.r
+```
+
 ## RMarkdownのPDF出力
 
 Rコンソール上で以下のコマンドを実行することで、`test.Rmd`ファイルをPDFとして出力できます。
@@ -23,12 +183,14 @@ rmarkdown::render("test.Rmd")
 また、ターミナルから以下のコマンドを実行することで、一発でPDFを出力することも可能です。
 
 ```bash
+# 直接実行
 Rscript -e 'rmarkdown::render("test.Rmd")'
-```
 
-これでrのコードを動かすことができる。
-```bash
-Rscript test.r
+# Makefileを使用して全てのRmdファイルを一括変換
+make render
+
+# Makefileを使用して特定のRmdファイルを変換
+make render-file FILE=test.Rmd
 ```
 
 作業するディレクトリをこのディレクトリの中で作ってファイルを管理していきましょう。
