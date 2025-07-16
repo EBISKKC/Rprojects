@@ -45,7 +45,7 @@ df_long <- df %>%
 df_long <- df_long %>% arrange(温度)
 
 # Sheet 2: skip 4 lines, header on 5th
-df2 <- read.csv("../data/sakamoto実験 - シート2.csv", check.names = FALSE, skip = 4, header = TRUE)
+df2 <- read.csv("../data/sakamoto実験 - シート2.csv", check.names = FALSE, skip = 0, header = TRUE)
 colnames(df2)[1] <- "Individual"
 df2_long <- df2 %>%
   pivot_longer(
