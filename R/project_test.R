@@ -10,7 +10,9 @@ cat("現在の作業ディレクトリ:", getwd(), "\n")
 
 # プロジェクトの構造を確認
 cat("プロジェクトの構造:\n")
-list.files(recursive = TRUE) %>% head(10) %>% cat(sep = "\n")
+list.files(recursive = TRUE) %>%
+  head(10) %>%
+  cat(sep = "\n")
 
 # サンプルデータの作成
 set.seed(123)

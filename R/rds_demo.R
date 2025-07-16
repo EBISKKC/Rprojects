@@ -40,8 +40,8 @@ analysis_results <- list(
   data = sample_data,
   model = linear_model,
   summary_stats = summary(sample_data$score),
-  plot_data = sample_data %>% 
-    group_by(grade) %>% 
+  plot_data = sample_data %>%
+    group_by(grade) %>%
     summarise(
       count = n(),
       mean_score = mean(score),
@@ -76,9 +76,10 @@ cat("ggplotオブジェクトを output/plots/scatter_plot.rds に保存しま�
 
 # 5. 因子変数の保存（レベル情報も保持）
 cat("5. 因子変数の保存\n")
-ordered_grade <- factor(sample_data$grade, 
-                       levels = c("C", "B", "A"), 
-                       ordered = TRUE)
+ordered_grade <- factor(sample_data$grade,
+  levels = c("C", "B", "A"),
+  ordered = TRUE
+)
 saveRDS(ordered_grade, "output/ordered_grade.rds")
 
 loaded_grade <- readRDS("output/ordered_grade.rds")
@@ -153,12 +154,15 @@ cat("ファイルサイズ:", round(file.size("output/big_data.rds") / 1024 / 10
 # 10. エラーハンドリングの例
 cat("10. エラーハンドリングの例\n")
 safe_load_rds <- function(file_path) {
-  tryCatch({
-    readRDS(file_path)
-  }, error = function(e) {
-    cat("エラー: ファイル", file_path, "を読み込めませんでした:", e$message, "\n")
-    NULL
-  })
+  tryCatch(
+    {
+      readRDS(file_path)
+    },
+    error = function(e) {
+      cat("エラー: ファイル", file_path, "を読み込めませんでした:", e$message, "\n")
+      NULL
+    }
+  )
 }
 
 # 存在しないファイルの読み込み
@@ -170,16 +174,17 @@ cat("11. 実際の分析でのワークフロー例\n")
 # ステップ1: データ前処理
 processed_data <- sample_data %>%
   mutate(
-    score_normalized = scale(score)[,1],
+    score_normalized = scale(score)[, 1],
     high_performer = score > quantile(score, 0.8)
   )
 saveRDS(processed_data, "output/workflow_step1.rds")
 
 # ステップ2: モデル構築
 step1_data <- readRDS("output/workflow_step1.rds")
-classification_model <- glm(high_performer ~ score_normalized + grade, 
-                          data = step1_data, 
-                          family = binomial())
+classification_model <- glm(high_performer ~ score_normalized + grade,
+  data = step1_data,
+  family = binomial()
+)
 saveRDS(classification_model, "output/workflow_step2.rds")
 
 # ステップ3: 結果の統合
