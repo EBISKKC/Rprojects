@@ -24,7 +24,7 @@ help:
 .PHONY: fmt
 fmt:
 	@echo "Formatting R files..."
-	Rscript -e 'if (!requireNamespace("styler", quietly = TRUE)) install.packages("styler", repos = "https://cran.rstudio.com/"); styler::style_dir(".", recursive = TRUE, filetype = "R")'
+	Rscript -e 'if (!requireNamespace("styler", quietly = TRUE)) install.packages("styler", repos = "https://cran.rstudio.com/"); styler::style_dir(".", recursive = TRUE, filetype = c("R", "Rmd"))'
 	@echo "Formatting complete!"
 
 # Lint all R files using lintr
