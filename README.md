@@ -163,6 +163,74 @@ make clean
 
 **注意**: 全てのMakefileコマンドはCRANミラーの問題を回避するために`repos = "https://cran.rstudio.com/"`を指定しています。
 
+## Rプロジェクト管理 (.Rprojファイル対応)
+
+RStudioプロジェクトファイル（.Rproj）を使用することで、プロジェクト単位での管理が可能になります。
+VSCodeとRStudioの両方で同じプロジェクトを扱うことができます。
+
+### プロジェクトセットアップ
+```bash
+# .Rprojファイルを作成（RStudio互換）
+make create-rproj
+
+# 標準的なRプロジェクトディレクトリを作成
+make setup-dirs
+
+# renvを初期化してパッケージ管理を開始
+make renv-init
+```
+
+### renvパッケージ管理
+```bash
+# パッケージ環境を復元
+make renv-restore
+
+# 現在のパッケージ状態をスナップショット
+make renv-snapshot
+```
+
+### プロジェクト構造
+```
+プロジェクト名/
+├── プロジェクト名.Rproj        # プロジェクトファイル
+├── renv.lock                   # renvロックファイル
+├── renv/                       # renvディレクトリ
+├── R/                          # Rコード
+├── data/                       # データファイル
+├── docs/                       # ドキュメント
+├── output/                     # 出力ファイル
+├── tests/                      # テストファイル
+├── README.md                   # プロジェクト説明
+├── Makefile                    # ビルドコマンド
+└── .gitignore                  # Git無視ファイル
+```
+
+### 推奨ワークフロー
+```bash
+# 1. プロジェクトの初期化
+make create-rproj
+make setup-dirs
+make renv-init
+
+# 2. 依存関係のインストール
+make deps
+make install
+
+# 3. 開発作業
+# (Rコードの編集)
+
+# 4. フォーマットとlintチェック
+make check
+
+# 5. テストの実行
+make test
+
+# 6. 環境のスナップショット
+make renv-snapshot
+```
+
+詳細なドキュメントは `docs/rproject-management.md` を参照してください。
+
 これでrのコードを動かすことができる。
 ```bash
 # 直接実行

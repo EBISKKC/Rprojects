@@ -14,6 +14,11 @@ help:
 	@echo "  make serve     - Start R session"
 	@echo "  make deps      - Install fmt and lint dependencies"
 	@echo "  make render-file FILE=path/to/file.Rmd - Render specific Rmd file"
+	@echo "  make create-rproj - Create .Rproj file for RStudio compatibility"
+	@echo "  make setup-dirs - Create standard R project directories"
+	@echo "  make renv-init - Initialize renv for package management"
+	@echo "  make renv-restore - Restore packages from renv.lock"
+	@echo "  make renv-snapshot - Save current package state to renv.lock"
 
 # Format all R files using styler
 .PHONY: fmt
@@ -144,3 +149,65 @@ check-data:
 	@echo ""
 	@echo "R data summary:"
 	@Rscript -e 'data <- read.csv("$(FILE)"); cat("Structure:\n"); str(data); cat("\nSummary:\n"); summary(data)'
+
+# Create .Rproj file for RStudio compatibility
+.PHONY: create-rproj
+create-rproj:
+	@echo "Creating .Rproj file..."
+	@PROJECT_NAME=$$(basename $$(pwd)); \
+	echo "Version: 1.0" > "$$PROJECT_NAME.Rproj"; \
+	echo "" >> "$$PROJECT_NAME.Rproj"; \
+	echo "RestoreWorkspace: No" >> "$$PROJECT_NAME.Rproj"; \
+	echo "SaveWorkspace: No" >> "$$PROJECT_NAME.Rproj"; \
+	echo "AlwaysSaveHistory: Default" >> "$$PROJECT_NAME.Rproj"; \
+	echo "" >> "$$PROJECT_NAME.Rproj"; \
+	echo "EnableCodeIndexing: Yes" >> "$$PROJECT_NAME.Rproj"; \
+	echo "UseSpacesForTab: Yes" >> "$$PROJECT_NAME.Rproj"; \
+	echo "NumSpacesForTab: 2" >> "$$PROJECT_NAME.Rproj"; \
+	echo "Encoding: UTF-8" >> "$$PROJECT_NAME.Rproj"; \
+	echo "" >> "$$PROJECT_NAME.Rproj"; \
+	echo "RnwWeave: Sweave" >> "$$PROJECT_NAME.Rproj"; \
+	echo "LaTeX: pdfLaTeX" >> "$$PROJECT_NAME.Rproj"; \
+	echo "" >> "$$PROJECT_NAME.Rproj"; \
+	echo "AutoAppendNewline: Yes" >> "$$PROJECT_NAME.Rproj"; \
+	echo "StripTrailingWhitespace: Yes" >> "$$PROJECT_NAME.Rproj"; \
+	echo "LineEndingConversion: Posix" >> "$$PROJECT_NAME.Rproj"; \
+	echo ".Rproj file created: $$PROJECT_NAME.Rproj"
+
+# Create standard R project directories
+.PHONY: setup-dirs
+setup-dirs:
+	@echo "Creating standard R project directories..."
+	@mkdir -p R
+	@mkdir -p data
+	@mkdir -p output
+	@mkdir -p tests
+	@mkdir -p docs
+	@echo "data/" > .gitignore
+	@echo "output/" >> .gitignore
+	@echo ".Rproj.user/" >> .gitignore
+	@echo ".RData" >> .gitignore
+	@echo ".Rhistory" >> .gitignore
+	@echo "renv/library/" >> .gitignore
+	@echo "Standard directories created!"
+
+# Initialize renv for package management
+.PHONY: renv-init
+renv-init:
+	@echo "Initializing renv..."
+	Rscript -e 'if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv", repos = "https://cran.rstudio.com/"); renv::init()'
+	@echo "renv initialization complete!"
+
+# Restore packages from renv.lock
+.PHONY: renv-restore
+renv-restore:
+	@echo "Restoring packages from renv.lock..."
+	Rscript -e 'renv::restore()'
+	@echo "Package restoration complete!"
+
+# Save current package state to renv.lock
+.PHONY: renv-snapshot
+renv-snapshot:
+	@echo "Creating renv snapshot..."
+	Rscript -e 'renv::snapshot()'
+	@echo "Snapshot created!"

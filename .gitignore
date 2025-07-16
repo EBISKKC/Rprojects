@@ -19,3 +19,8 @@
 *.gif
 
 *.png
+
+data/
+
+output/
+
