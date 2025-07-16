@@ -54,7 +54,6 @@ deps:
 
 # Clean generated files
 .PHONY: clean
-clean:
 	@echo "Cleaning generated files..."
 	find . -name "*.pdf" -not -path "./dojou-25-5/Rplots.pdf" -not -path "./jikken-matuoka/Rplots.pdf" -not -path "./test/Rplots.pdf" -delete
 	find . -name "*.html" -delete
@@ -62,6 +61,18 @@ clean:
 	find . -name "*.log" -delete
 	find . -name "*.tex" -not -name "test.tex" -delete
 	find . -name "Rplots.pdf" -delete
+	@echo "Cleanup complete!"
+clean:
+	@echo "Cleaning generated files..."
+	# PDF, HTML, TEX, LOG, AUX
+	find . -name "*.pdf" -not -path "./dojou-25-5/Rplots.pdf" -not -path "./jikken-matuoka/Rplots.pdf" -not -path "./test/Rplots.pdf" -delete
+	find . -name "*.html" -delete
+	find . -name "*.aux" -delete
+	find . -name "*.log" -delete
+	find . -name "*.tex" -not -name "test.tex" -delete
+	find . -name "Rplots.pdf" -delete
+	# RDS, PNG, GIF, CSV（output以下の全サブディレクトリも含む）
+	find ./output -type f \( -name "*.rds" -o -name "*.png" -o -name "*.gif" -o -name "*.csv" -o -name "*.html" -o -name "*.pdf" \) -delete
 	@echo "Cleanup complete!"
 
 # Run R scripts in test directory

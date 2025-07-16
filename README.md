@@ -231,6 +231,51 @@ make renv-snapshot
 
 詳細なドキュメントは `docs/rproject-management.md` を参照してください。
 
+## ドキュメント
+
+プロジェクトの詳細なドキュメントは `docs/` フォルダにあります：
+
+### 📚 利用可能なドキュメント
+
+- **[rproject-management.md](docs/rproject-management.md)** - .Rprojファイルとrenvの基本的な使い方
+- **[development-guide.md](docs/development-guide.md)** - ディレクトリ構成と開発方法の詳細ガイド
+- **[workflow-guide.md](docs/workflow-guide.md)** - 実際の開発フローの実践例
+- **[project_test.html](docs/project_test.html)** - プロジェクト管理機能の動作確認結果
+
+### 🚀 クイックスタート
+
+```bash
+# 1. プロジェクトの初期化
+make create-rproj
+make setup-dirs
+make renv-init
+
+# 2. 依存関係のインストール
+make deps
+make install
+
+# 3. 開発開始
+code .  # VSCodeで開く
+# または
+# RStudioで .Rproj ファイルを開く
+```
+
+### 📊 典型的な開発フロー
+
+```bash
+# 1. データ処理スクリプトを R/ に作成
+make run FILE=R/data_analysis.R
+
+# 2. コード品質チェック
+make check
+
+# 3. 分析レポートを docs/ に作成
+make render-file FILE=docs/analysis_report.Rmd
+
+# 4. 環境を保存
+make renv-snapshot
+```
+
 これでrのコードを動かすことができる。
 ```bash
 # 直接実行

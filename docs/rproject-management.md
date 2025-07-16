@@ -208,6 +208,12 @@ renv::restore()
 
 ## 参考資料
 
+### 関連ドキュメント
+- [開発ガイド](development-guide.md) - ディレクトリ構成と開発方法の詳細
+- [ワークフローガイド](workflow-guide.md) - 実際の開発フローの実践例
+- [プロジェクトテスト](project_test.html) - 動作確認結果
+
+### 外部リンク
 - [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 - [renv package](https://rstudio.github.io/renv/)
 - [R for VSCode](https://github.com/REditorSupport/vscode-R)
