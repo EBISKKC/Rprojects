@@ -70,7 +70,6 @@ df3_long <- df3 %>%
   ) %>%
   drop_na()
 df3_long <- df3_long %>% arrange(Closed_Spiracle)
-
 ```
 
 
@@ -112,7 +111,6 @@ summary_stats3 <- df3_long %>%
     sd = sd(Beats_30sec, na.rm = TRUE)
   )
 knitr::kable(summary_stats3, caption = "Summary statistics by closed spiracle (Sheet 3) female")
-
 ```
 
 

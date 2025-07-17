@@ -13,8 +13,6 @@
 # Ignore .aux files
 *.aux
 
-# Ignore .out files
-*.html
 
 *.gif
 
