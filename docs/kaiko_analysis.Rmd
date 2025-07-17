@@ -26,8 +26,7 @@ df_long <- df_long %>% arrange(温度)
 
 ```{r setup, message=FALSE, warning=FALSE}
 library(tidyverse)
-# Sheet 1: skip 4 lines, header on 5th
-df <- read.csv("../data/sakamoto実験 - シート1.csv", check.names = FALSE, skip = 4, header = TRUE)
+df <- read.csv("../data/sakamoto実験 - シート1.csv", check.names = FALSE, skip = 0, header = TRUE)
 colnames(df)[1] <- "個体番号"
 temp_cols <- setdiff(colnames(df), "個体番号")
 temp_cols <- temp_cols[temp_cols != "" & !is.na(temp_cols)]
@@ -44,7 +43,6 @@ df_long <- df %>%
   drop_na()
 df_long <- df_long %>% arrange(温度)
 
-# Sheet 2: skip 4 lines, header on 5th
 df2 <- read.csv("../data/sakamoto実験 - シート2.csv", check.names = FALSE, skip = 0, header = TRUE)
 colnames(df2)[1] <- "Individual"
 df2_long <- df2 %>%
@@ -58,6 +56,21 @@ df2_long <- df2 %>%
   ) %>%
   drop_na()
 df2_long <- df2_long %>% arrange(Closed_Spiracle)
+
+df3 <- read.csv("../data/sakamoto実験 - シート3.csv", check.names = FALSE, skip = 0, header = TRUE)
+colnames(df3)[1] <- "Individual"
+df3_long <- df3 %>%
+  pivot_longer(
+    -Individual,
+    names_to = "Closed_Spiracle",
+    values_to = "Beats_30sec"
+  ) %>%
+  mutate(
+    Beats_30sec = as.numeric(Beats_30sec)
+  ) %>%
+  drop_na()
+df3_long <- df3_long %>% arrange(Closed_Spiracle)
+
 ```
 
 
@@ -85,13 +98,27 @@ summary_stats2 <- df2_long %>%
     mean = mean(Beats_30sec, na.rm = TRUE),
     sd = sd(Beats_30sec, na.rm = TRUE)
   )
-knitr::kable(summary_stats2, caption = "Summary statistics by closed spiracle (Sheet 2)")
+knitr::kable(summary_stats2, caption = "Summary statistics by closed spiracle (Sheet 2) male")
+```
+
+# Summary statistics by closed spiracle (Sheet 3)
+
+```{r summary-stats3}
+summary_stats3 <- df3_long %>%
+  group_by(Closed_Spiracle) %>%
+  summarise(
+    n = n(),
+    mean = mean(Beats_30sec, na.rm = TRUE),
+    sd = sd(Beats_30sec, na.rm = TRUE)
+  )
+knitr::kable(summary_stats3, caption = "Summary statistics by closed spiracle (Sheet 3) female")
+
 ```
 
 
 # Mean and SD by temperature (Sheet 1)
 
-```{r plot-mean-sd, fig.width=7, fig.height=5}
+```{r plot-mean-sd-male, fig.width=7, fig.height=5}
 p <- ggplot(summary_stats, aes(x = Temperature, y = Mean)) +
   geom_line(group = 1, color = "steelblue", size = 1.2) +
   geom_point(size = 3, color = "steelblue") +
@@ -107,13 +134,13 @@ print(p)
 
 # Mean and SD by closed spiracle (Sheet 2)
 
-```{r plot-mean-sd2, fig.width=7, fig.height=5}
+```{r plot-mean-sd2-male, fig.width=7, fig.height=5}
 p3 <- ggplot(summary_stats2, aes(x = Closed_Spiracle, y = mean, group = 1)) +
   geom_line(color = "darkred", size = 1.2) +
   geom_point(size = 3, color = "darkred") +
   geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.5, color = "orange") +
   labs(
-    title = "Mean heartbeats per 30 sec by closed spiracle (Sheet 2)",
+    title = "Mean heartbeats per 30 sec by closed spiracle (Sheet 2) male",
     x = "Closed spiracle",
     y = "Heartbeats per 30 sec"
   ) +
@@ -121,6 +148,21 @@ p3 <- ggplot(summary_stats2, aes(x = Closed_Spiracle, y = mean, group = 1)) +
 print(p3)
 ```
 
+# Mean and SD by closed spiracle (Sheet 3)
+
+```{r plot-mean-sd3-female, fig.width=7, fig.height=5}
+p5 <- ggplot(summary_stats3, aes(x = Closed_Spiracle, y = mean, group = 1)) +
+  geom_line(color = "darkred", size = 1.2) +
+  geom_point(size = 3, color = "darkred") +
+  geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width = 0.5, color = "orange") +
+  labs(
+    title = "Mean heartbeats per 30 sec by closed spiracle (Sheet 3) female",
+    x = "Closed spiracle",
+    y = "Heartbeats per 30 sec"
+  ) +
+  theme_minimal(base_size = 14)
+print(p5)
+```
 
 # Individual trajectories (Sheet 1)
 
@@ -147,7 +189,7 @@ p4 <- ggplot(df2_long, aes(x = Closed_Spiracle, y = Beats_30sec, group = Individ
   geom_line(alpha = 0.5) +
   geom_point() +
   labs(
-    title = "Individual heartbeats per 30 sec by closed spiracle (Sheet 2)",
+    title = "Individual heartbeats per 30 sec by closed spiracle (Sheet 2) male",
     x = "Closed spiracle",
     y = "Heartbeats per 30 sec"
   ) +
@@ -156,8 +198,19 @@ p4 <- ggplot(df2_long, aes(x = Closed_Spiracle, y = Beats_30sec, group = Individ
 print(p4)
 ```
 
-# Discussion
+# Individual trajectories by closed spiracle (Sheet3)
 
-- How did heartbeats change as temperature increased?
-- How large was the individual variation?
-- Future directions for experiments and analysis
+```{r plot-individual3, fig.width=7, fig.height=5}
+p6 <- ggplot(df3_long, aes(x = Closed_Spiracle, y = Beats_30sec, group = Individual, color = Individual)) +
+  geom_line(alpha = 0.5) +
+  geom_point() +
+  labs(
+    title = "Individual heartbeats per 30 sec by closed spiracle (Sheet 3) female",
+    x = "Closed spiracle",
+    y = "Heartbeats per 30 sec"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+print(p6)
+```
+
