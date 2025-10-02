@@ -1,0 +1,9 @@
+{
+    "path" : "~/r_sample/chap04/sec03/store traffic",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

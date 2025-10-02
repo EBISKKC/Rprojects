@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# 処理だけを行う関数\nshow1 <- function() {\n  print(\"Hello!\")\n}\n\nshow1()\n\n# 引数を受け取る関数\nshow2 <- function(word1, word2) {\n  print(word1)\n  print(word2)\n}\n\nshow2(\"Rの世界へ\", \"ようこそ！\")\n\n# 引数を受け取って戻り値を返す関数\ntaxin <- function(val) {\n  tax_in <- val * 1.08\n  return(tax_in)\n}\n\ntax_in <- taxin(100)\n\n",
+    "created" : 1496907809507.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2878336094",
+    "id" : "C2272A7",
+    "lastKnownWriteTime" : 1489393554,
+    "last_content_update" : 1489393554,
+    "path" : "~/Downloads/r_sample/chap02/sec03/function/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

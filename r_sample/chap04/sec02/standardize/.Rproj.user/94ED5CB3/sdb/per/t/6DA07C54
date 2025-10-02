@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getSd <- function(x) {                  # 標準偏差を返す関数\n  return(                               # 戻り値を返す\n    sqrt(                               # 分散の平方根\n      sum((x - mean(x))^2) / length(x)) # 分散の計算式\n  )\n}\n\ndata <- read.table(           # 店舗別売上.txtをdataに代入\n  \"販売台数.txt\",\n  header=T,                   # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"        # 文字コードをShift_JISに指定\n)\n\nnum_A  <- data$車種A          # 車種Aのデータをベクトルに代入\nmean_A <- mean(num_A)         # 車種Aの平均を求める\nsd_A   <- getSd(num_A)        # 車種Aの標準偏差を求める\nstd_A  <- \n  (num_A - mean_A) / sd_A     # 標準化(データ-平均)÷標準偏差)\nprint(std_A)                  # 出力\n\nnum_B  <- data$車種B          # 車種Bのデータをベクトルに代入\nmean_B <- mean(num_B)         # 車種Bの平均を求める\nsd_B   <- getSd(num_B)        # 車種Bの標準偏差を求める\nstd_B  <- \n  (num_B - mean_B) / sd_A     # 標準化(データ-平均)÷標準偏差)\nprint(std_B)                  # 出力\n",
+    "created" : 1486285833341.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2930936091",
+    "id" : "6DA07C54",
+    "lastKnownWriteTime" : 1486288460,
+    "last_content_update" : 1486362427131,
+    "path" : "~/r_sample/chap04/sec02/standardize/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

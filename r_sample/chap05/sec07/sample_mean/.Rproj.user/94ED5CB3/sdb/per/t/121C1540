@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(             # テスト結果.txtをdataに代入\n  \"計測結果.txt\",\n  header=T,                     # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"          # 文字コードをShift_JISに指定\n)\n\nsample_m <- as.numeric(NULL)    # 空の実数型ベクトルを用意\n\nfor (i in 1:15){                # 処理を15回繰り返す\n  sample   <- sample(           # 抽出したサンプルをベクトルに代入\n    data$容量,                  # 抽出元のデータ\n    5,                          # サンプルサイズ\n    replace = FALSE             # 復元抽出は行わない\n    )\n  # 標本平均をベクトルに追加\n  sample_m <- c(sample_m, mean(sample))\n}\n\ns_mean <- mean(sample_m)        # 標本平均の平均を求める\np_mean <- mean(data$容量)       # 元データの平均\n\nhist(\n  sample_m,                     # すべての標本平均をヒストグラムにする\n  freq = FALSE,                 # 相対度数を表示する\n  col=\"red\"                     # 棒の色は赤\n)\n",
+    "created" : 1486785822688.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1247269279",
+    "id" : "121C1540",
+    "lastKnownWriteTime" : 1487132818,
+    "last_content_update" : 1487132818643,
+    "path" : "~/r_sample/chap05/sec07/sample_mean/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(                      # 容量検査.txtをdataに代入\n  \"A店B店.txt\",\n  header=T,                              # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"                   # 文字コードをShift_JISに指定\n)\n\nA_sum     <- data[1,3]                   # A店の注文数の合計\nB_sum     <- data[2,3]                   # B店の注文数の合計\nAB_sum    <- data[3,3]                   # A店舗B店の注文数の合計\n\nmenu1_sum <- data[3,1]                   # メニュー1の注文数の合計\nmenu2_sum <- data[3,2]                   # メニュー2の注文数の合計\nmenu_sales <- c(                         # 店舗ごとの注文数をベクトルに代入\n                data[1,1],               # A店のメニュー1の注文数\n                data[1,2],               # A店のメニュー2の注文数\n                data[2,1],               # B店のメニュー1の注文数\n                data[2,2]                # B店のメニュー2の注文数\n                )\n\n\nexp_A_m1  <- menu1_sum * A_sum / AB_sum  # A店メニュー1の期待値\nexp_A_m2  <- menu2_sum * A_sum / AB_sum  # A店メニュー2の期待値\nexp_B_m1  <- menu1_sum * B_sum / AB_sum  # B店メニュー1の期待値\nexp_B_m2  <- menu2_sum * B_sum / AB_sum  # B店メニュー2の期待値\n\n# すべての期待値をベクトルに代入\nexp_freq  <- c(exp_A_m1, exp_A_m2, exp_B_m1, exp_B_m2)\n\n# それぞれの売上について検定統計量を求める\nchi_element <- (menu_sales - exp_freq) ^2/exp_freq\n# 検定統計量χ2の実現値を求める\nchi_elm_val <- sum(chi_element)\n# 有意水準5％のχ2値（棄却域）を求める \nchi_val <- qchisq(0.05, 1,lower.tail=FALSE)\n\n# 自由度1のχ2分布のグラフを描く\ncurve(dchisq(x, 1), 0, 6)\nabline(v=qchisq(0.05, 1,lower.tail=FALSE))\n",
+    "created" : 1487480506086.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "539493500",
+    "id" : "2D591E3A",
+    "lastKnownWriteTime" : 1487752897,
+    "last_content_update" : 1487752897526,
+    "path" : "~/r_sample/chap07/sec01/chi_square_test/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

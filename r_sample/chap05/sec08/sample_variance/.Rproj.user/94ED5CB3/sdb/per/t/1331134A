@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getDisper <- function(x) {       # 標本分散を返す関数\n  dev <- x - mean(x)             # 偏差を求める\n  return(sum(dev^2) / length(x)) # 分散を返す\n}\n\ndata <- read.table(              # 計測結果結果.txtをdataに代入\n  \"計測結果.txt\",\n  header=T,                      # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"           # 文字コードをShift_JISに指定\n)\n\nsample_m <- as.numeric(NULL)     # 空の実数型ベクトルを用意\n\nfor (i in 1:15){                 # 処理を15回繰り返す\n  sample   <- sample(\n    data$容量,                   # 抽出元のデータ\n    5,                           # サンプルサイズ\n    replace = FALSE              # 復元抽出は行わない\n  )\n  # サンプルの平均をベクトルに追加\n  sample_m <- c(sample_m, mean(sample))\n}\n\ns_mean <- mean(sample_m)        # 標本平均の平均\ns_var  <- getDisper(sample_m)   # 標本平均の分散\np_mean <- mean(data$容量)       # 母集団の平均\n#p_var  <- getDisper(data$容量)  # 母集団の分散\n",
+    "created" : 1486807406678.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3696648157",
+    "id" : "1331134A",
+    "lastKnownWriteTime" : 1486872457,
+    "last_content_update" : 1486872457566,
+    "path" : "~/r_sample/chap05/sec08/sample_variance/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

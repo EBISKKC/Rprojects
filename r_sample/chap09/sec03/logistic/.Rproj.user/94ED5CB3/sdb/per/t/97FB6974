@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "file <- \"カラーテレビの普及率.txt\" # 読み込むファイル名を設定\n\ndata <- read.delim(                # ファイルを読み込んでdataに格納\n  file,\n  header=T,                        # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"             # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列をベクトルに代入\nyear <- c(data[,1])                # 1列目の変量をベクトルに代入\npene <- c(data[,2])                # 2列目の変量をベクトルに代入\n\n# ロジスティック回帰分析を行う\nglm <- glm(pene~year,family=binomial)\n\nplot(year, pene,type=\"l\")          # 実測値の散布図を描く\nlines(year,                        # x座標は年代\n      fitted(glm),                 # y座標は予測値\n      lty=2,\n      col=\"red\",lwd=2)\n\nexp <- cbind(data,                 # 実測値と予測値の表を作成\n                fitted(glm))\n\n",
+    "created" : 1488764034698.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3756742872",
+    "id" : "97FB6974",
+    "lastKnownWriteTime" : 1488766163,
+    "last_content_update" : 1488766163682,
+    "path" : "~/r_sample/chap09/sev03/logistic/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

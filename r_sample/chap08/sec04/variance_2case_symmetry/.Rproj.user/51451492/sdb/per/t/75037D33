@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(             # 学習効果.txtをdataに代入\n  \"学習効果.txt\",\n  header=T,                     # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"          # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列の変量をベクトルに代入\nvariate <- c(\n  data[,2],                     # 1列目の変量をベクトルに代入\n  data[,3],                     # 2列目の変量をベクトルに代入\n  data[,4],                     # 3列目の変量をベクトルに代入\n  data[,5],                     # 4列目の変量をベクトルに代入\n  data[,6],                     # 5列目の変量をベクトルに代入\n  data[,7]                      # 6列目の変量をベクトルに代入\n)\n\n# 1要因に含まれるデータの数を取得\nsize     <- length(data[,1]) * (length(colnames(data))-1) / 2\n# 1つの列に含まれるデータの数を取得\nsize_col <- length(data[,1])\n# 条件の数を取得\nsize_row <- length(colnames(data))-1\n\n# 1つ目の要因の水準を識別子としてデータの数だけ作成\nfac1 <- factor(\n  c(\n    rep(\"fac_A_1\", size),       # 1つ目の要因に含まれるデータの数だけ登録\n    rep(\"fac_A_2\", size)        # 2つ目の要因に含まれるデータの数だけ登録\n  )\n)\n\n# 2つ目の要因の水準を識別子としてデータの数だけ作成\nfac2 <- factor(\n  rep(\n    c(\n      rep(\"fac_B_1\", size_col), # 1列目の識別子を行データの数だけ登録\n      rep(\"fac_B_2\", size_col), # 2列目の識別子を行データの数だけ登録\n      rep(\"fac_B_3\", size_col)  # 3列目の識別子を行データの数だけ登録\n    ),2\n  )\n)\n\n# 第3の識別子をデータの数だけ作成\nfac3 <- factor(\n  rep(\n    c(\n      \"fac_C_1\",                # 1人目\n      \"fac_C_2\",                # 2人目\n      \"fac_C_3\",                # 3人目\n      \"fac_C_4\",                # 4人目\n      \"fac_C_5\"                 # 5人目\n    ),6\n  )\n)\n\n\n# aov()関数を実行して分散分析表を出力\nsummary(\n  aov( variate ~ fac1 * fac2 + Error( fac3 + \n                                      fac3 : fac1 + \n                                      fac3 : fac2 +\n                                      fac1 : fac2 : fac3 )\n  )\n)\n\n",
+    "created" : 1496910520214.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1704448750",
+    "id" : "75037D33",
+    "lastKnownWriteTime" : 1488266260,
+    "last_content_update" : 1488266260,
+    "path" : "~/Downloads/r_sample/chap08/sec04/variance_2case_symmetry/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

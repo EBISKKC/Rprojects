@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "airquality <- na.omit(airquality)# airqualityから欠損値がある行を削除\n\nlm <- lm(Ozone ~                # 線形重回帰分析を実行\n            Solar.R + Wind + Temp,\n          data=airquality\n         )\n\nlm <- lm(airquality[,1] ~       # 線形重回帰分析を実行\n           airquality[,2] + airquality[,3] + airquality[,4],\n         data=airquality\n)\n\nqqnorm(                         # 残差の散布図を描く\n  resid(lm)                     # 残差の行列を抽出\n  )\nqqline(                         # 散布図に上下四分位点を結ぶ直線を描く\n  resid(lm),                    # 残差の行列を抽出\n  lwd=2,col=\"red\")\n\n# 一般化線形モデルに正規分布を使う\nglm1 <- glm(airquality[,1] ~    # 線形重回帰分析を実行\n              airquality[,2] + airquality[,3] + airquality[,4],\n            data=airquality,\n            family = gaussian   # 正規分布を使用\n            )\n\n# 一般化線形モデルにガンマ分布を使う\nglm2 <- glm(airquality[,1] ~    # 線形重回帰分析を実行\n              airquality[,2] + airquality[,3] + airquality[,4],\n            data=airquality,\n            family = Gamma      # ガンマ分布を使用\n            )\n\nexp <- cbind(airquality[,1],    # 実測値と予測値の表を作成\n             fitted(glm1),      # 正規分布を仮定した予測値\n             fitted(glm2))      # ガンマ分布を仮定した予測値\n\nAIC(lm)\nAIC(glm1)\nAIC(glm2)\n\n# 分布図と直線を描いてみる\nqqnorm(resid(glm1))\nqqline(resid(glm1),lwd=2,col=\"red\")\nqqnorm(resid(glm2))\nqqline(resid(glm2),lwd=2,col=\"red\")\n",
+    "created" : 1496913698521.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4014687548",
+    "id" : "63443224",
+    "lastKnownWriteTime" : 1494026642,
+    "last_content_update" : 1494026642,
+    "path" : "~/Downloads/r_sample/chap09/sec04/linear_model/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

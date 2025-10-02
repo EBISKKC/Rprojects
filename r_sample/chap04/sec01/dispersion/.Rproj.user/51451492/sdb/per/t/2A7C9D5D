@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(         # 店舗別売上.txtをデータフレームとしてdataに代入\n  \"販売台数.txt\",\n  header=T,                 # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"      # 文字コードをShift_JISに指定\n)\nhist(data$車種A)            # 車種Aのヒストグラムを作成\nhist(data$車種B)            # 車種Bのヒストグラムを作成\n\nme_A = mean(data$車種A)     # 車種Aの平均を求める\nnum_A <- data$車種A         # 車種Aの販売台数をベクトルに代入\ndev_A <- num_A - me_A       # 車種Aの偏差を求める\ncat(\"偏差：\",dev_A, \"\\n\")   # 出力\n\nme_B = mean(data$車種B)     # 車種Bの平均を求める\nnum_B <- data$車種B         # 車種Bの販売台数をベクトルに代入\ndev_B <- num_B - me_B       # 車種Bの偏差を求める\ncat(\"偏差：\",dev_B, \"\\n\")   # 出力\n\n# 車種Aの分散を求める\ndspr_A <- sum(dev_A^2) / length(data$車種A)\ncat(\"分散：\", dspr_A, \"\\n\")\n# 車種Bの分散を求める\ndspr_B <- sum(dev_B^2) / length(data$車種A)\ncat(\"分散：\", dspr_B, \"\\n\")\n",
+    "created" : 1496909508000.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1086120046",
+    "id" : "2A7C9D5D",
+    "lastKnownWriteTime" : 1486202928,
+    "last_content_update" : 1486202928,
+    "path" : "~/Downloads/r_sample/chap04/sec01/dispersion/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

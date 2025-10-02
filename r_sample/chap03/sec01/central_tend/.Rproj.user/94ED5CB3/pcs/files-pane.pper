@@ -1,0 +1,9 @@
+{
+    "path" : "~/r_sample/chap03/sec01/central_tend",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

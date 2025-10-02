@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "getSd <- function(x) {                  # 標本分散をもとに標準偏差を返す関数\n  return(                               # 標準偏差を返す\n    sqrt(                               # 分散の平方根\n      sum((x - mean(x))^2) / length(x)) # 分散の計算式\n  )\n}\n\ndata <- read.table(                     # 売上状況.txtをdataに代入\n  \"売上状況.txt\",\n  header=T,                             # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"                  # 文字コードをShift_JISに指定\n)\n# 必要なデータを用意\nnum <- data$売上額                      # 売上額のデータをベクトルに代入\nsdv <- getSd(num)                       # 売上額の標準偏差を求める\nseq <- seq(30, 60, by=5)                # 10～100までの5刻みのシーケンスを生成\n\n# 累積確率を求める\ncmp <- pnorm(\n  seq,                                  # 累積確率を求めるデータ\n  mean       = mean(data$売上額),       # 来店者数の平均\n  sd         = sdv,                     # 来店者数の標準偏差\n  lower.tail = TRUE                     # 累積確率を求める\n  )\n\n# 5万円刻みの売上額と累積確率のデータフレームを作成\ncp_frm <- data.frame(\n  \"売上額\"=seq,\n  \"累積確率\"=cmp\n  )\n\nhow = 1 - cp_frm[3,2]\n",
+    "created" : 1496909792611.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4051520572",
+    "id" : "1D33015C",
+    "lastKnownWriteTime" : 1493889052,
+    "last_content_update" : 1493889052,
+    "path" : "~/Downloads/r_sample/chap05/sec01/General_ND/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

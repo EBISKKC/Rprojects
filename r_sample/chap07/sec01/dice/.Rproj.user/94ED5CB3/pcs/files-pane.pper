@@ -1,0 +1,9 @@
+{
+    "path" : "~/r_sample/chap07/sec01/dice",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

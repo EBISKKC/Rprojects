@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(             # 学習効果.txtをdataに代入\n  \"学習効果.txt\",\n  header=T,                     # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"          # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列の変量をベクトルに代入\nvariate <- c(\n  data[,2],                     # 2列目の変量をベクトルに代入\n  data[,3],                     # 3列目の変量をベクトルに代入\n  data[,4],                     # 4列目の変量をベクトルに代入\n  data[,6],                     # 6列目の変量をベクトルに代入\n  data[,7],                     # 7列目の変量をベクトルに代入\n  data[,8]                      # 8列目の変量をベクトルに代入\n)\n\n# 1要因に含まれるデータの数を取得\nsize     <- length(data[,1]) * (length(colnames(data))-2) / 2\n# 1つの列に含まれるデータの数を取得\nsize_col <- length(data[,1])\n# 条件の数を取得\nsize_row <- length(colnames(data))-2\n\n# 1つ目の要因の水準を識別子としてデータの数だけ作成\nfac1 <- factor(\n  c(\n    rep(\"fac_A_1\", size),       # 1つ目の要因に含まれるデータの数だけ登録\n    rep(\"fac_A_2\", size)        # 2つ目の要因に含まれるデータの数だけ登録\n  )\n)\n\n# 2つ目の要因の水準を識別子としてデータの数だけ作成\nfac2 <- factor(\n  rep(\n    c(\n      rep(\"fac_B_1\", size_col), # 1列目の識別子を行データの数だけ登録\n      rep(\"fac_B_2\", size_col), # 2列目の識別子を行データの数だけ登録\n      rep(\"fac_B_3\", size_col)  # 3列目の識別子を行データの数だけ登録\n    ),2\n  )\n)\n\n# 第3の識別子をデータの数だけ作成\nfac3 <- factor(\n  c(\n    # 1つ目の要因の水準に含まれるデータを分類する識別子\n    rep(1 : size_col, size_row / 2),\n    # 2つ目の要因の水準に含まれるデータを分類する識別子\n    rep(size_row : (size_col * 2), size_row / 2)\n  )\n)\n\n\nfac3# aov()関数を実行して分散分析表を出力\nsummary(\n  aov( variate ~ fac1 * fac2 + Error( fac3 : fac1 + \n                                      fac3 : fac1 : fac2 )\n  )\n)\n\n",
+    "created" : 1488263028930.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1299680735",
+    "id" : "4151BC70",
+    "lastKnownWriteTime" : 1488618555,
+    "last_content_update" : 1488618555915,
+    "path" : "~/r_sample/chap08/sec05/variance_2case_1symmetry/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

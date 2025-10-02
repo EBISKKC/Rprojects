@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# 0～2を0.01刻みにしたシーケンスを生成\nn <- seq(0, 2, by = 0.01)\n# 標準正規分布の確率密度関数で確率を求める\ndn <- dnorm(n, mean=0, sd=1)\n\n# 区間面積用の数値ベクトルを作る\ns_area <- as.numeric(NULL)\n# 累積面積用の数値ベクトルを作る\nt_area <- as.numeric(NULL)\n\n# 区間面積と累計面積を計算\ni <- 0                             # カウンター変数\nfor (value in n){                  # nの要素のぶんだけ繰り返す\n  if(value == 0){                  # nが0であれば実行\n    s_area <- 0                    # 区間面積を0とする\n    t_area <- 0                    # 累計面積を0とする\n    i <- i + 1                     # カウンターの値を1増やす\n  } else {                         # nの要素が0以外の場合の処理\n    # 区間面積のベクトルに区間面積を追加\n    s_area <- c(\n      s_area,                      # 代入先のベクトル\n      (dn[i] + dn[i+1]) * 0.01 / 2 # 区間面積を台形の面積で近似\n      )\n    # 累計面積のベクトルに累計面積を追加\n    t_area <- c(\n      t_area,                      # 代入先のベクトル\n      t_area[i] + s_area[i+1]      # 累計の面積を計算\n      )\n    i <- i + 1                     # カウンターの値を1増やす\n  }\n}\n# 標準正規分布の数表を作成\ndframe <- data.frame(\n  x_value      = n,                # 0～2までの連続値\n  section_area = s_area,           # 区間面積\n  total_area   = t_area            # 累計面積\n  )\n\n\n",
+    "created" : 1496909741147.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1233068373",
+    "id" : "F72F9C9E",
+    "lastKnownWriteTime" : 1486547750,
+    "last_content_update" : 1486547750,
+    "path" : "~/Downloads/r_sample/chap04/sec04/std_distribution/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

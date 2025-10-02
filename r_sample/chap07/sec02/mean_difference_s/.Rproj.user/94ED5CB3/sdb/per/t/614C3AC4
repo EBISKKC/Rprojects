@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(                      # 採点.txtをdataに代入\n  \"採点.txt\",\n  header=T,                              # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"                   # 文字コードをShift_JISに指定\n)\n\n# 主力メニューの点数をベクトルに代入\nmenu1 <- data$当店\n# 欠損値を除いてライバル店の点数をベクトルに代入\nmenu2 <- data$ライバル店[!is.na(data$ライバル店)]\n\nmean_m1 <- mean(menu1)                   # 主力メニューの平均\nmean_m2 <- mean(menu2)                   # ライバル店の平均\n\n# ブールされた分散の平方根を求めることで「ブール標準偏差」を求める\npool <- sqrt(                            # 平方根を求めることで\n  (\n    (length(menu1) - 1) * var(menu1) +   # 主力メニューの標本分散×サイズ－1\n      (length(menu2) - 1) * var(menu2)   # ライバル店の標本分散×サイズ－1\n  )\n  /(length(menu1) + length(menu2) - 2)   # サンプルサイズの合計－2\n)\n# 検定統計量tの分母の計算\ndn <- pool * sqrt(1 / length(menu1) +\n                    1 / length(menu2)\n)\n# 検定統計量tの実現値を求める\nst <- (mean_m1 - mean_m2) / dn\n\n# 自由度を求める\ndof <- length(menu1) + length(menu2) - 2\n\n# 自由度がサンプルサイズの合計－2のt分布における下側確率0.025のt値を求める\nt_low <- qt(0.025, dof)\n\n# 自由度がサンプルサイズの合計－2のt分布における上側確率0.025のt値を求める\nt_upp <- qt(0.025, dof, lower.tail=FALSE)\n\ncurve(dt(x, dof), -3, 3)  # 自由度16のt分布のグラフを描く\nabline(v=qt(0.025, dof))  # 下側確率0.025のt値のところにラインを引く\nabline(v=qt(0.975, dof))  # 上側確率0.975のt値のところにラインを引く\n\np <- 2*pt(st, dof)        # 両側検定におけるp値を求める\n\nt.test(\n  menu1,                  # 独立した2群のデータ1\n  menu2,                  # 独立した2群のデータ2\n  var.equal = TRUE        # スチューデントのt検定を実施\n  )\n",
+    "created" : 1487682217463.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1535689099",
+    "id" : "614C3AC4",
+    "lastKnownWriteTime" : 1487813096,
+    "last_content_update" : 1487813096683,
+    "path" : "~/r_sample/chap07/sec02/mean_difference_s/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

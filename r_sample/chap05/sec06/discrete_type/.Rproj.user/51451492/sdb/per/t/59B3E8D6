@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "temp<-floor(\n  runif(1000,   # 試行回数\n        1,      # 出力する乱数の最小値\n        7       # 出力する乱数の最大値の次の値\n  )\n)\n\nhist(           # ヒストグラムを作成\n  temp,\n  breaks = seq(\n    0,          # 下限\n    6,          # 上限\n    1           # 階級の幅\n  ),\n  freq = FALSE, # 相対度数を表示する\n  col=\"red\"     # 棒の色は赤\n)\n",
+    "created" : 1496909972039.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3334651343",
+    "id" : "59B3E8D6",
+    "lastKnownWriteTime" : 1487057754,
+    "last_content_update" : 1487057754,
+    "path" : "~/Downloads/r_sample/chap05/sec06/discrete_type/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

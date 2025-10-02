@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(\"clipboard\")\n",
+    "created" : 1496907403596.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "791504242",
+    "id" : "E9CF1B3B",
+    "lastKnownWriteTime" : 1489361114,
+    "last_content_update" : 1489361114,
+    "path" : "~/Downloads/r_sample/chap02/sec02/copy/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
