@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getSd <- function(x) {                  # 標準偏差を返す関数\n  return(                               # 戻り値を返す\n    sqrt(                               # 分散の平方根\n      sum((x - mean(x))^2) / length(x)) # 分散の計算式\n  )\n}\n\ndata <- read.table(       # 来店者数.txtをdataに代入\n  \"来店者数.txt\",\n  header=T,               # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"    # 文字コードをShift_JISに指定\n)\n\nnum  <- data$来店者数     # 来店者数のデータをベクトルに代入\nsd   <- getSd(num)        # 来店者数の標準偏差を求める\nmean <- mean(num)         # 来店者数の平均\n# 標準化係数をデータフレームにバインド\nnew_frm <- cbind(\n              # もとのデータフレーム\n              data,\n              # 標準化係数のデータフレーム\n              data.frame(\n                # 標準化の計算\n                (num - mean) / sd\n              )\n           )\n",
+    "created" : 1486374823846.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1421496005",
+    "id" : "60BCE45",
+    "lastKnownWriteTime" : 1486376389,
+    "last_content_update" : 1486376389140,
+    "path" : "~/r_sample/chap04/sec03/store traffic/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

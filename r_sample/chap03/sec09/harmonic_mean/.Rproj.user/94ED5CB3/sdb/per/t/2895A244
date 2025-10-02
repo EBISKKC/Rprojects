@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "speed <- c(110, 90)             # 行きと帰りの速度\nhm = length(speed)/sum(1/speed) # 2÷((1÷110)+(1÷90))の計算\ncat(\"平均速度\", hm, \"km\")       # 出力",
+    "created" : 1486175635520.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1011348272",
+    "id" : "2895A244",
+    "lastKnownWriteTime" : 1486190835,
+    "last_content_update" : 1486190835963,
+    "path" : "~/r_sample/chap03/sec09/harmonic_mean/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

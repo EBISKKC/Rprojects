@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(                      # 満足度調査.txtをdataに代入\n  \"満足度調査.txt\",\n  header=T,                              # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"                   # 文字コードをShift_JISに指定\n)\n\n# A店の点数を欠損値を除いてベクトルに代入\na <- data$A店\n# B店の点数をベクトルに代入\nb <- data$B店[!is.na(data$B店)]\n\n# ウェルチのt検定の実施\nt.test(\n  a,                  # 独立した2群のデータ1\n  b,                  # 独立した2群のデータ2\n)\n",
+    "created" : 1487763044933.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2997039519",
+    "id" : "D336F654",
+    "lastKnownWriteTime" : 1487813270,
+    "last_content_update" : 1487813270615,
+    "path" : "~/r_sample/chap07/sec03/mean_difference_w/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

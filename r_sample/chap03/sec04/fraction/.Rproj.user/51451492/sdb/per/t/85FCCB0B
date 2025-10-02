@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "30/50\n",
+    "created" : 1496908573497.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2003774424",
+    "id" : "85FCCB0B",
+    "lastKnownWriteTime" : 1485944560,
+    "last_content_update" : 1485944560,
+    "path" : "~/Downloads/r_sample/chap03/sec04/fraction/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

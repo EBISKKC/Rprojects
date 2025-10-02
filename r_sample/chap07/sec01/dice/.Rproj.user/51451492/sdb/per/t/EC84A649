@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(     # サイコロ.txtをdataに代入\n  \"サイコロ.txt\",\n  header=T,             # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"  # 文字コードをShift_JISに指定\n)\n\nfreq <- c(\n  data[1,2],            # 1の目の観測度数\n  data[2,2],            # 2の目の観測度数\n  data[3,2],            # 3の目の観測度数\n  data[4,2],            # 4の目の観測度数\n  data[5,2],            # 5の目の観測度数\n  data[6,2]             # 6の目の観測度数\n)\n\n# それぞれの観測度数について検定統計量を求める\nelement <- (freq - 2)^2 / 2\n# 検定統計量χ2の実現値を求める\nelm_val <- sum(element)\n# 有意水準5％のχ2値（棄却域）を求める \nchi_val <- qchisq(\n                  0.05,            # 有意水準5%\n                  5,               # 自由度\n                  lower.tail=FALSE # 上側確率を求める\n                  )\n",
+    "created" : 1496910262025.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3010575474",
+    "id" : "EC84A649",
+    "lastKnownWriteTime" : 1487681684,
+    "last_content_update" : 1487681684,
+    "path" : "~/Downloads/r_sample/chap07/sec01/dice/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

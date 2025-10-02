@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "file <- \"売上高と各種要因.txt\" # 読み込むファイル名を設定\n\ndata <- read.delim(            # ファイルを読み込んでdataに格納\n  file,\n  header=T,                    # 1行目は列名であることを指定\n  row.names=1,\n  fileEncoding=\"CP932\"         # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列をベクトルに代入\nvar_1<- c(data[,1])           # 1列目の変量をベクトルに代入\nvar_2<- c(data[,2])           # 2列目の変量をベクトルに代入\nvar_3<- c(data[,3])           # 3列目の変量をベクトルに代入\nvar_4<- c(data[,4])           # 4列目の変量をベクトルに代入\nvar_5<- c(data[,5])           # 5列目の変量をベクトルに代入\nvar_6<- c(data[,6])           # 6列目の変量をベクトルに代入\n \ncoef <- cor(data)            # 相関係数を求める\n",
+    "created" : 1488506122244.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1242508328",
+    "id" : "F63DDD4F",
+    "lastKnownWriteTime" : 1488617943,
+    "last_content_update" : 1488617943971,
+    "path" : "~/r_sample/chap09/sec02/multiple_linear/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "z          <- abs(qnorm(0.025))             # z値を求める\np          <- 0.45                          # 比率をセット\nparam      <- 1000                          # 母集団のサイズ\nborder_low <- p - z * sqrt(p*(1 - p)/1000)  # 下側境界値\nborder_upp <- p + z * sqrt(p*(1 - p)/1000)  # 上側境界値",
+    "created" : 1487465420776.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2402279435",
+    "id" : "43A4F691",
+    "lastKnownWriteTime" : 1487467871,
+    "last_content_update" : 1487467871279,
+    "path" : "~/r_sample/chap06/sec03/approval level/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

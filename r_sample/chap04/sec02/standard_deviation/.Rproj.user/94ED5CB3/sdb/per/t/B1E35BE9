@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getDisper <- function(x) {       # 分散を返す関数\n  dev <- x - mean(x)             # 偏差を求める\n  return(sum(dev^2) / length(x)) # 分散を返す\n}\n\ndata <- read.table(           # 店舗別売上.txtをdataに代入\n  \"販売台数.txt\",\n  header=T,                   # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"        # 文字コードをShift_JISに指定\n)\n\nnum_A  <- data$車種A          # 車種Aのデータをベクトルに代入\ndspr_A <- getDisper(num_A)    # 車種Aの分散を求める\nsd_A   <- sqrt(dspr_A)        # 車種Aの標準偏差を求める\ncat(\"標準偏差：\", sd_A, \"\\n\") # 出力\n\nnum_B  <- data$車種B          # 車種Bのデータをベクトルに代入\ndspr_B <- getDisper(num_B)    # 車種Bの分散を求める\nsd_B   <- sqrt(dspr_B)        # 車種Bの標準偏差を求める\ncat(\"標準偏差：\", sd_B, \"\\n\") # 出力\n",
+    "created" : 1486204281236.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2175248717",
+    "id" : "B1E35BE9",
+    "lastKnownWriteTime" : 1486723870,
+    "last_content_update" : 1486723870451,
+    "path" : "~/r_sample/chap04/sec02/standard_deviation/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

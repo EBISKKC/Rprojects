@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# データのサマリを出力する関数\nshowSummary <- function(z) {\n  smm = summary(data$売上高_千円)\n  cat(\"最小値\", smm[\"Min.\"] ,\"\\n\")\n  cat(\"第一数\", smm[\"1st Qu.\"],\"\\n\")\n  cat(\"中央値\", smm[\"Median\"],\"\\n\")\n  cat(\"平均値\", smm[\"Mean\"],\"\\n\")\n  cat(\"第三数\", smm[\"3rd Qu.\"],\"\\n\")\n  cat(\"最大値\", smm[\"Max.\"],\"\\n\")\n}\ndata <- read.table(     # 店舗別売上.txtをデータフレームとしてdataに代入\n  \"店舗別売上.txt\",\n  header=T,             # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"  # 文字コードをShift_JISに指定\n)\nshowSummary(data)       # showSummary()を呼ぶ\n",
+    "created" : 1486115955806.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1506697011",
+    "id" : "2446623F",
+    "lastKnownWriteTime" : 1486118486,
+    "last_content_update" : 1486118486473,
+    "path" : "~/r_sample/chap03/sec07/summary/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

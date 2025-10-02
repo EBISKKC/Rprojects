@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "actual.len  <- ToothGrowth[,1]                   # 歯の長さの実測値を取得\nactual.supp <- ToothGrowth[,2]                   # 投与方法の実測値を取得\nactual.dose <- ToothGrowth[,3]                   # 投与量の実測値を取得\n\n# ロジスティック回帰分析\ntooth.glm <- glm(actual.supp ~                   # 投与方法を目的変数にする\n                   actual.len + actual.dose,     # 歯の長さと投与量を説明変数にする\n                 family=binomial                 # 二項分布のリンク関数を指定\n                 )\n\npredict.supp <- round(                           # 四捨五入\n                      fitted(tooth.glm)          # 予測値を取得\n                      )\n\nresult  <- data.frame(actual.supp, predict.supp) # データフレームを作成\nc_table <- table(actual.supp, predict.supp)      # クロス集計表を作成\n\n\n# 以下はロジスティック曲線を描くコードです\n# 冒頭の#を削除してコメントアウトを解除して\n# お使いください。\n# eta <- seq(from=-5, to=5, length=200)\n# plot(eta, exp(eta) / (1 + exp(eta)), type=\"l\" )\n",
+    "created" : 1496913928980.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2679454997",
+    "id" : "8D6DFED6",
+    "lastKnownWriteTime" : 1496914547,
+    "last_content_update" : 1496914547785,
+    "path" : "~/Downloads/r_sample/chap09/sec05/logistic_func/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

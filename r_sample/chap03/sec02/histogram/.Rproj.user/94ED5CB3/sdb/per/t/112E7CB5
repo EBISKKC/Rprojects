@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# access.csvをtblに代入\ntbl <- read.csv(\"access.csv\", encoding=\"UTF-8\")\n# 階級を自動で設定してヒストグラムを作成\nhist(\n  tbl$アクセス数  # \"アクセス数\"の列を対象にする\n)\n",
+    "created" : 1496193449277.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4227808753",
+    "id" : "112E7CB5",
+    "lastKnownWriteTime" : 1496193471,
+    "last_content_update" : 1496193471971,
+    "path" : "~/r_sample/chap03/sec02/histogram/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

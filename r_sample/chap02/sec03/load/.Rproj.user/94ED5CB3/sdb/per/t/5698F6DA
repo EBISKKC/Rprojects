@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# ファイルをデータフレームに読み込む関数\nload.file <- function(path) {\n  data <- read.table(    # ファイルを読み込んでデータフレームを作成\n    path,                # 受け取ったファイル名\n    header=T,            # 1行目は列名であることを指定\n    fileEncoding=\"CP932\" # 文字コードをShift_JISに指定\n  )\n  return(data)           # 作成したデータフレームを戻り値として返す\n}\n",
+    "created" : 1489393791758.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1615578258",
+    "id" : "5698F6DA",
+    "lastKnownWriteTime" : 1489396058,
+    "last_content_update" : 1489396058039,
+    "path" : "~/r_sample/chap02/sec03/load/load_file.R",
+    "project_path" : "load_file.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

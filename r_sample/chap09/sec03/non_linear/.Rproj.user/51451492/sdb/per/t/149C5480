@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# SSlogis()を引数にして非線形回帰分析\nfunc.nls <- nls(pene ~ \n                  SSlogis(year, Asym, xmid, scal)\n                )\n\nsummary(func.nls)                   # 分析結果を表示\n\nfunc.coef <- coefficients(func.nls) # 係数を取得\n\n# 係数を取り出す\nAsym <- as.vector(func.coef[1])     # aの値\nxmid <- as.vector(func.coef[2])     # bの値\nscal <- as.vector(func.coef[3])     # cの値\nx    <- 10                          # xの値\n\n# ロジスティック曲線モデル\nfunc.y    <- Asym / (1 + exp((xmid - x) / scal))\n\nexpe_2    <- cbind(data,            # 実測値と予測値の表を作成\n                   fitted(relat.nls),\n                   fitted(func.nls))\n\n\nplot(year, pene, cex=1)             # 実測値の散布図を作成\nlines(year,                         # x座標は年代\n      fitted(func.nls),             # y座標は予測値\n      col=\"RED\",\n      lty=\"dotted\",\n      lwd=2)\n\n",
+    "created" : 1496910866982.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1092928523",
+    "id" : "149C5480",
+    "lastKnownWriteTime" : 1496913408,
+    "last_content_update" : 1496913408316,
+    "path" : "~/Downloads/r_sample/chap09/sec03/non_linear/script3.R",
+    "project_path" : "script3.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

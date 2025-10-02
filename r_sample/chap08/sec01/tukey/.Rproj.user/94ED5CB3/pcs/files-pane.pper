@@ -1,0 +1,9 @@
+{
+    "path" : "~/r_sample/chap08/sec01/tukey",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

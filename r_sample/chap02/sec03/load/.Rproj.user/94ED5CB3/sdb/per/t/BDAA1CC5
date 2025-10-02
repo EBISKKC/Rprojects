@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "source(\"load_file.R\", encoding=\"utf-8\") # load_file.Rを読み込む\n\ndata <- load.file(\"店舗別売上.txt\")     # load.file()関数を呼び出す\n\n",
+    "created" : 1489394290047.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2779774043",
+    "id" : "BDAA1CC5",
+    "lastKnownWriteTime" : 1489396891,
+    "last_content_update" : 1489396891321,
+    "path" : "~/r_sample/chap02/sec03/load/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

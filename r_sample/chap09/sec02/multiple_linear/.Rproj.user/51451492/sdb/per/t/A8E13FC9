@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "##################################################\n# 増減法で説明変数を減らして重回帰分析\n##################################################\n# 説明変数を減らしたAIC値を求める\nstp<-step(lm1)\n# 不要な説明変数を外して線形単回帰分析を実行\nlm2 <- lm(var_1 ~\n            var_3 + var_5 + var_6,\n          data=data)\nsummary(lm2)                # 分析結果を表示\nround(coefficients(lm2), 2) # 係数を表示\n\n# 分析のもとになったデータと予測値、残差を一覧にする\nexp <- predict(lm2)         # 元データに対する予測値\nres <- residuals(lm2)       # データと予測値の残差\nview_lm2 <- data.frame(data[1], exp, res) # データフレームにまとめる\n\n",
+    "created" : 1496910616339.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4080585994",
+    "id" : "A8E13FC9",
+    "lastKnownWriteTime" : 1488605916,
+    "last_content_update" : 1488605916,
+    "path" : "~/Downloads/r_sample/chap09/sec02/multiple_linear/script3.R",
+    "project_path" : "script3.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

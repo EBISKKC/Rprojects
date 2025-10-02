@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "vct1 <- c(1, 2, 3, 4, 5, 6)\nvct2 <- c(10, 20, 30, 40, 50, 60)\nvct3 <- c(100, 200, 300, 400, 500, 600)\n\nmtx1 <- matrix(vct1)             # 行列を作成\nmtx2 <- matrix(vct1, nrow=2)     # 2行の行列を作成\nmtx3 <- matrix(vct1, ncol=2)     # 2列の行列を作成\nmtx4 <- matrix(vct1, 2,2)        # 2(行)×2(列)の行列を作成\nmtx5 <- matrix(vct1,\n               nrow=2,           # 2行の行列\n               byrow = TRUE)     # 値を行方向に並べる\n\nmtx6 <- rbind(vct1, vct2, vct3)  # 3つのベクトルを行として連結する\ncolSums(mtx6)                    # 列の合計を求める\nrowSums(mtx6)                    # 行の合計を求める\nmtx7 <- cbind(vct1, vct2, vct3)  # 3つのベクトルを列として連結する\ncolSums(mtx7)                    # 列の合計を求める\nrowSums(mtx7)                    # 行の合計を求める\n\nmtx7[1,]   # 1行目を取り出す\nmtx7[,1]   # 1列目を取り出す\nmtx7[1,1]  # 1行目の1列目の値を取り出す\n",
+    "created" : 1496907678581.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2885969751",
+    "id" : "540527E5",
+    "lastKnownWriteTime" : 1489360706,
+    "last_content_update" : 1489360706,
+    "path" : "~/Downloads/r_sample/chap02/sec02/matrix/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

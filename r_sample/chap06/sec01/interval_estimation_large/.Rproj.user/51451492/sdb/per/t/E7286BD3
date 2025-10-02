@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(                  # 容量検査.txtをdataに代入\n  \"容量検査.txt\",\n  header=T,                          # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"               # 文字コードをShift_JISに指定\n)\nprob <- 0.95                         # 信頼度を設定\nz  <- abs(qnorm((1 - prob) / 2))     # z値を求める\nn  <- length(data$容量)              # サンプルサイズを求める\nm  <- mean(data$容量)                # 標本平均を求める\nsd <- sd(data$容量)                  # 標本標準偏差をもとんる\nborder_low <- m - z * (sd / sqrt(n)) # 下側境界値\nborder_upp <- m + z * (sd/sqrt(n))   # 上側境界値\n1",
+    "created" : 1496910153100.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "932296634",
+    "id" : "E7286BD3",
+    "lastKnownWriteTime" : 1487382724,
+    "last_content_update" : 1487382724,
+    "path" : "~/Downloads/r_sample/chap06/sec01/interval_estimation_large/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

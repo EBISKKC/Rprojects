@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "add_book2 <- list(\n                  id   = c(1:3),\n                  name = list(\"秀和太郎\", \"築地花子\", \"宗田解析\"),\n                  add  = list(\"中央区築地100-1\",\n                              \"中央区築地本町200\",\n                              \"中央区日本橋99\")\n                  )\n\nadd_book2[[\"name\"]]       # 名前付きリスト要素の取り出し\nadd_book2$\"name\"          # 名前付きリスト要素の取り出し\nadd_book2[\"name\"]         # 名前付きリスト要素を名前付きで取り出し\nadd_book2[[\"name\"]][[1]]  # 名前付きリスト要素のサブ要素の取り出し\nadd_book2[[\"name\"]][1]    # 名前付きリスト要素のサブ要素をリストに格納して取り出し\n\n",
+    "created" : 1489226442332.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1860794254",
+    "id" : "331200EE",
+    "lastKnownWriteTime" : 1492309586,
+    "last_content_update" : 1492309586151,
+    "path" : "~/r_sample/chap02/sec02/address/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

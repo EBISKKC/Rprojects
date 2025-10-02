@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(    # 定着度.txtをdataに代入\n  \"定着度.txt\",\n  header=T,            # 1行目は列名であることを指定\n  fileEncoding=\"CP932\" # 文字コードをShift_JISに指定\n)\n\nj <- length(data[1,])  # 列の数を調べる\n\nfor(i in c(1:j)) {\n  assign(\n    sprintf(\"x%d\", i), # xに連番を付けた名前を作る\n    data[,i]           # データフレムの1列目から代入する\n  )\n}\n",
+    "created" : 1489378364551.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3660403183",
+    "id" : "C98DAF94",
+    "lastKnownWriteTime" : 1489393586,
+    "last_content_update" : 1489393586342,
+    "path" : "~/r_sample/chap02/sec03/for/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

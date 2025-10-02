@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "################################################\n# 不要な相互作用を除いて重回帰分析\n################################################\n# 相互作用を考慮した重回帰分析を実行\nlm3 <- lm(var_1 ~\n            (var_2 + var_3 + var_4 + var_5 + var_6) ^2,\n          data=data)\nsummary(lm3)\n\n# 相互作用を1つずつ外してAIC値を求める\nlm4 <- step(lm3)\n\n# 分析のもとになったデータと予測値、残差を一覧にする\nexp <- predict(lm4)         # 元データに対する予測値\nres <- residuals(lm4)       # データと予測値の残差\nview_lm4 <- data.frame(data[1], exp, res) # データフレームにまとめる\n\n# 係数を表示\nround(coefficients(lm4), 2)\n\n# 説明変数に値を代入\n  v2 <- 0.1\n  v3 <- 0\n  v4 <- 300\n  v5 <- 4\n  v6 <- 4\n  \n# 回帰モデルで予測する\nprd <- -42856.68 +\n  8566.82  * v2 -      # 立地\n  7240.91  * v3 +      # 競合店\n  73.71    * v4 +      # 面積\n  11490.02 * v5 +      # サービス満足度\n  7600.81  * v6 -      # 商品の充実度\n  21.45    * v2 * v4 - # var_2:var_4\n  805.99   * v2 * v6 + # var_2:var_6\n  23.56    * v3 * v4 - # var_3:var_4\n  17.90    * v4 * v5 - # var_4:var_5\n  1575.55  * v5 * v6   # var_5:var_6\n\n",
+    "created" : 1496910617184.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3984065695",
+    "id" : "3DAC199E",
+    "lastKnownWriteTime" : 1488617946,
+    "last_content_update" : 1488617946,
+    "path" : "~/Downloads/r_sample/chap09/sec02/multiple_linear/script4.R",
+    "project_path" : "script4.R",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

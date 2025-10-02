@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "tbl <- read.csv(\"access.csv\", encoding = \"UTF-8\") # access.csvをtblに代入\nm <- mean(tbl$アクセス数)                         # アクセス数の平均をmに代入\nprint(m)                                          # コンソールに出力\n",
+    "created" : 1496193233292.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4172180538",
+    "id" : "4A5D2DFA",
+    "lastKnownWriteTime" : 1485848233,
+    "last_content_update" : 1485848233,
+    "path" : "~/r_sample/chap03/sec01/central_tend/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
