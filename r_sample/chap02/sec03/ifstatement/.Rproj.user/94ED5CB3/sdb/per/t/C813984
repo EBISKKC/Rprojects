@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "num <- -10\n\nif(num < 0){       # numは負の値であるか\n  num <- num * -1  # -1を掛けて正の値にする\n}\n",
+    "created" : 1489368751211.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4227947441",
+    "id" : "C813984",
+    "lastKnownWriteTime" : 1489370603,
+    "last_content_update" : 1489370603992,
+    "path" : "~/r_sample/chap02/sec03/ifstatement/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(             # 模試結果.txtをdataに代入\n  \"模試結果.txt\",\n  header=T,                     # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"          # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列の変量をベクトルに代入\nvariate <- c(\n             data[,1],          # 1列目の変量をベクトルに代入\n             data[,2],          # 2列目の変量をベクトルに代入\n             data[,3]           # 3列目の変量をベクトルに代入\n            )\n\n# 各列のサイズを取得\nl1 <- length(data[,1])\nl2 <- length(data[,2])\nl3 <- length(data[,3])\n\nidentifier <- factor(           # ベクトルを要因型に変換\n  c(\n    rep(colnames(data)[1], l1), # 1列目の項目を名変量の数だけ登録する\n    rep(colnames(data)[2], l2), # 2列目の項目名を変量の数だけ登録する\n    rep(colnames(data)[3], l3)  # 3列目の項目名を変量の数だけ登録する\n    )\n  )\n\n# oneway.test()を実行\noneway.test(\n  variate~identifier,           # variateにidentifierを対応付けるモデル式\n  var.equal=TRUE                # 等分散を仮定してF検定を実施\n  )\n\n# aov()を実行\naov(variate~identifier)\n\n# summary()関数の引数にaov()関数の実行結果を指定\nsummary(\n  aov(variate~identifier)\n  )\n\n# anova()を実行\nanova(\n  lm(variate~identifier)        # variateにidentifierを対応付けるモデル式\n  )\n\nm_A <- mean(data[,1])\nm_B <- mean(data[,2])\nm_C <- mean(data[,3])\nm_all <- mean(variate)\n",
+    "created" : 1496910392902.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3718578265",
+    "id" : "A437DC6A",
+    "lastKnownWriteTime" : 1488000742,
+    "last_content_update" : 1488000742,
+    "path" : "~/Downloads/r_sample/chap08/sec01/variance_1case_nosymmetry/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

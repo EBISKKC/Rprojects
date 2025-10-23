@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(    # サプリの効果.txtをdataに代入\n  \"サプリの効果.txt\",\n  header=T,            # 1行目は列名であることを指定\n  fileEncoding=\"CP932\" # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列の変量をベクトルに代入\nvariate <- c(\n  data[,2],  # 2列目の変量をベクトルに代入\n  data[,3],  # 3列目の変量をベクトルに代入\n  data[,4]   # 4列目の変量をベクトルに代入\n)\n\n# 列のサイズ(行データの数)を取得\nsize <- length(data[,1])\n\n# 識別子を作成\nidentifier <- factor(\n  c(\n    rep(colnames(data)[2], size), # 列2のタイトルを行データの数だけ登録\n    rep(colnames(data)[3], size), # 列3のタイトルを行データの数だけ登録\n    rep(colnames(data)[4], size)  # 列4のタイトルを行データの数だけ登録\n  )\n)\n\n# 1列目の行タイトルを行のデータサイズの数だけ登録する\nidentifier_row <- factor(\n  rep(data[,1], length(data[1,]) - 1)\n)\n\n# summary()関数の引数にaov()関数の実行結果を指定\nsummary(\n  aov(variate~identifier+identifier_row)\n)\n\n# 自由度が2と8のF分布の棄却域を求める\nqf(0.05, 2, 8, lower.tail = FALSE)\n",
+    "created" : 1496910454320.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2470600125",
+    "id" : "E308B3F0",
+    "lastKnownWriteTime" : 1488008258,
+    "last_content_update" : 1488008258,
+    "path" : "~/Downloads/r_sample/chap08/sec02/variance_1case_symmetry/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

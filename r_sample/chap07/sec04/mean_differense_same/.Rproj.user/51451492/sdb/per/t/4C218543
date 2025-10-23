@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.delim(       # 体重の変化.txtをdataに代入\n  \"体重の変化.txt\",\n  header=T,               # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"    # 文字コードをShift_JISに指定\n)\n\nbefore <- data$摂取前     # 摂取前の体重をベクトルに代入\nafter <- data$摂取後      # 摂取後の体重をベクトルに代入\n\nmean_m1 <- mean(before)   # 摂取前の体重の平均\nmean_m2 <- mean(after)    # 摂取後の体重の平均\n\nchange <- after - before  # 変化量を求める\n\ndenom <- sd(change) / sqrt(length(change)) # 検定統計量の分母の計算\n\nnumer <- mean(change)                      # 検定統計量の分子の計算\nst <- numer / denom                        # 検定統計量の実現値を求める\n\n\ndof <- length(change) - 1 # 自由度を求める\n\n# 自由度がサンプルサイズの合計－2のt分布における下側確率0.025のt値を求める\nt_low <- qt(0.025, dof)\n\n# 自由度がサンプルサイズの合計－2のt分布における上側確率0.025のt値を求める\nt_upp <- qt(0.025, dof, lower.tail=FALSE)\n\ncurve(dt(x, dof), -3, 3)  # 自由度N-1のt分布のグラフを描く\nabline(v=qt(0.025, dof))  # 下側確率0.025のt値のところにラインを引く\nabline(v=qt(0.975, dof))  # 上側確率0.975のt値のところにラインを引く\n\np <- 2*pt(st, dof)        # 両側検定におけるp値を求める\n\nt.test(change)            # t.test()の実施\n\nt.test(                   # t.test()の実施\n  before,                 # データ1\n  after,                  # データ2\n  paired=TRUE             # 対応ありを指定\n  )\n",
+    "created" : 1496910341481.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1537104678",
+    "id" : "4C218543",
+    "lastKnownWriteTime" : 1487897758,
+    "last_content_update" : 1487897758,
+    "path" : "~/Downloads/r_sample/chap07/sec04/mean_differense_same/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

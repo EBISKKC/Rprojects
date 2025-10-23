@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "data <- read.table(             # 店舗別売上.txtをdataに代入\n  \"店舗別売上.txt\",\n  header=TRUE,                  # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"          # 文字コードをShift_JISに指定\n)\n",
+    "created" : 1496906264762.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "473308231",
+    "id" : "A2F00421",
+    "lastKnownWriteTime" : 1496906763,
+    "last_content_update" : 1496906763914,
+    "path" : "~/Downloads/r_sample/chap02/sec02/load_file/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

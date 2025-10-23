@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "file <- \"普及率.txt\" # 読み込むファイル名を設定\n\ndata <- read.delim(                # ファイルを読み込んでdataに格納\n  file,\n  header=T,                        # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"             # 文字コードをShift_JISに指定\n)\n\n# データフレームの各列をベクトルに代入\nyear <- c(data[,1])                # 1列目の変量をベクトルに代入\npene <- c(data[,2])                # 2列目の変量をベクトルに代入\n\n# 普及率の散布図を描く\nplot(data, col=\"red\")\n\n",
+    "created" : 1488628001148.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4072464702",
+    "id" : "8E69432A",
+    "lastKnownWriteTime" : 1496218574,
+    "last_content_update" : 1496218574836,
+    "path" : "~/r_sample/chap09/sec03/non_linear/script1.R",
+    "project_path" : "script1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

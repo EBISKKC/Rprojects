@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getDisper <- function(x) {                # 分散を返す関数\n  dev <- x - mean(x)                      # 偏差を求める\n  return(sum(dev^2) / length(x))          # 分散を返す\n}\n\ngetSd <- function(x) {                    # 標準偏差を返す関数\n  return(                                 # 戻り値を返す\n    sqrt(                                 # 分散の平方根\n      sum(\n        (x - mean(x))^2) / length(x)      # 分散の計算式\n    )\n  )\n}\n\ndata <- read.table(                       # テスト結果.txtをdataに代入\n  \"計測結果.txt\",\n  header=T,                               # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"                    # 文字コードをShift_JISに指定\n)\n\nsample_m <- as.numeric(NULL)              # 標本平均を格納する空のベクトルを用意\nrp <- c(1:1000)                           # 繰り返す回数をベクトルに代入\nsize <- 20                      　        # サンプルサイズをベクトルに代入\n\nfor (i in rp){                            # 処理を10000回繰り返す\n  sample   <- sample(\n    data$容量,                            # 抽出元のデータ\n    size,                                 # サンプルサイズ\n    replace = FALSE                       # 復元抽出は行わない\n  )\n  # 標本平均をベクトルに追加\n  sample_m <- c(sample_m, mean(sample))\n}\n\ns_mean <- mean(sample_m)                  # 標本平均の平均を求める\np_mean <- mean(data$容量)                 # 母集団の平均\n\nhist(\n  sample_m,                               # すべての標本平均をヒストグラムにする\n  freq = FALSE,                           # 相対度数を表示する\n  col=\"red\"                               # 棒の色は赤\n)\nlines(density(sample_m))                  # 確率密度の近似値をラインで描画\n\n# 標本平均の平均の分散を求める\nsample_m_dsp   <- getDisper(sample_m)\n# 母集団から標本平均の分散を割り出す\nsample_m_dsp_est <- getDisper(data$容量)/size\n# 標準誤差を求める\nstandard_error <- sqrt(sample_m_dsp)\n# 標準偏差÷√サンプルサイズで標準誤差を求める\nstandard_error_by_sd <-getSd(data$容量)/sqrt(size)\n",
+    "created" : 1487136737939.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1172374616",
+    "id" : "82845AE",
+    "lastKnownWriteTime" : 1487136952,
+    "last_content_update" : 1487136952781,
+    "path" : "~/r_sample/chap05/sec07/sample_mean/script3.R",
+    "project_path" : "script3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

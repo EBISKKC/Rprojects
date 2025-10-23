@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "vct1 <- c(1, 2, 3, 4, 5, 6)\nvct2 <- c(10, 20, 30, 40, 50, 60)\nvct3 <- c(100, 200, 300, 400, 500, 600)\n\narray1 <- array(\n  c(vct1, vct2, vct3), # vct1、vct2、vct3を要素にしたベクトル\n  dim=c(2,3,3)         # 行数の2、列数の3、行列の数3を要素にしたベクトル\n)\n",
+    "created" : 1496907350287.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "337754536",
+    "id" : "EFB2EF34",
+    "lastKnownWriteTime" : 1489303078,
+    "last_content_update" : 1489303078,
+    "path" : "~/Downloads/r_sample/chap02/sec02/array/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

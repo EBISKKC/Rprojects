@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "d.study  <- round(dist(time))         # 距離を求めて小数点以下を四捨五入\n\nd.study  <- dist(time)                # ユークリッド距離を求める\nhc.study <- hclust(d.study)           # デフォルトの最遠隣法で分析\n\npar(family = \"HiraKakuProN-W3\")       ##### Macで日本語をプロットするために必要な記述\n\nplot(hc.study)                        # 樹形図を作成\nplot(hc.study, hang=-1)               # 樹形図を作成(葉の高さを揃える)\nhc.study$merge                        # クラスタリングの過程を示す行列を取得\nhc.study$height                       # クラスターの枝の高さを取得\ncophenetic(hc.study)                  # コーフェン行列を取得\nhc.study$order                        # 樹形図の個体番号を取得\n\n",
+    "created" : 1496914573813.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "274114957",
+    "id" : "7F76DAB0",
+    "lastKnownWriteTime" : 1496916272,
+    "last_content_update" : 1496916272909,
+    "path" : "~/Downloads/r_sample/chap10/sec01/cluster_1/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

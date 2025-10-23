@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "c.study <- dist(time,\"canberra\")              # キャンベラ距離を求める\nc_s.study <- hclust(c.study, method=\"single\") # 最近隣法で分析\npar(family = \"HiraKakuProN-W3\")               ##### Macで日本語をプロットするために必要な記述\nplot(c_s.study, hang=-1)                      # 樹形図を作成(葉の高さを揃える)\n\ne.study <- dist(time, \"euclidean\")            # ユークリッド距離を求める\ne_w.study <- hclust(e.study,method=\"ward.D2\") # ウォード法で分析\nplot(e_w.study, hang=-1)                      # 樹形図を作成(葉の高さを揃える)\n\ncor(d.study,cophenetic(hc.study))  # ユークリッド距離と最遠隣法\ncor(c.study,cophenetic(c_s.study)) # キャンベラ距離と最近隣法\ncor(e.study,cophenetic(e_w.study)) # ユークリッド距離とウォード法\n\n",
+    "created" : 1496914574796.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3094128371",
+    "id" : "25711A94",
+    "lastKnownWriteTime" : 1496916272,
+    "last_content_update" : 1496916272955,
+    "path" : "~/Downloads/r_sample/chap10/sec01/cluster_1/script3.R",
+    "project_path" : "script3.R",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

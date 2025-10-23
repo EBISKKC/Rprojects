@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "temp<-floor(\n  runif(6,      # 試行回数\n        1,      # 出力する乱数の最小値\n        7       # 出力する乱数の最大値の次の値\n  )\n)\n\nhist(           # ヒストグラムを作成\n  temp,\n  breaks = seq(\n    0,          # 下限\n    6,          # 上限\n    1           # 階級の幅\n  ),\n  freq = TRUE,  # 度数を表示する\n  col=\"red\"     # 棒の色は赤\n)\n",
+    "created" : 1496909970910.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "477353814",
+    "id" : "B039A721",
+    "lastKnownWriteTime" : 1487057754,
+    "last_content_update" : 1487057754,
+    "path" : "~/Downloads/r_sample/chap05/sec06/discrete_type/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

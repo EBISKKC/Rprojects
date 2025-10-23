@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# 3年間の収益率\nrate <- c(\n  1+(20/100),  # +20％\n  1-(30/100),  # -30％\n  1+(10/100)   # +10％\n)\nx <- prod(rate)^(1/length(rate))  # 収益率の幾何平均を求める\ncat(\"平均収益率\", x - 1)          # 出力\n\n\n\n# 以下は練習問題\nr <- c(\n  1+(10/100),  # +20％\n  1-(12/100),  # -12％\n  1+(3/100),   # +3％\n  1+(8/100),   # +8％\n  1+(4/100)    # +4％\n)\nx1 <- prod(r)^(1/length(r))  # 収益率の幾何平均を求める\ncat(\"平均収益率\", x1 - 1)    # 出力\n",
+    "created" : 1496909447247.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2285429015",
+    "id" : "AE3D49EE",
+    "lastKnownWriteTime" : 1496194526,
+    "last_content_update" : 1496194526,
+    "path" : "~/Downloads/r_sample/chap03/sec08/geometric mean/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

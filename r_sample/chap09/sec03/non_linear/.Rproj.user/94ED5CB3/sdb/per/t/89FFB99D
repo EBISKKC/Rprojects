@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# 非線形回帰分析\nrelat.nls <- nls(\n                 pene ~ a / (1 + b * exp(c * year)), # 関係式\n                 start=c(a=1, b=1, c=-1),            # 初期値を設定\n                 trace=\"TRUE\"                        # 計算過程をトレース\n                 )\n\nyear <-(1:19)       \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t # 年度を1～19にする\n\n# 非線形回帰分析\nrelat.nls <- nls(\n                 pene ~ a / (1 + b * exp(c * year)), # 関係式\n                 start=c(a=1, b=1, c=-1),            # 初期値を設定\n                 trace=\"TRUE\"                        # 計算過程をトレース\n                 )\n\nsummary(relat.nls)                      # 分析結果を表示\n\nrelat.coef <- coefficients(relat.nls)   # 係数を取得\n\n# 係数を取り出す\na<- as.vector(relat.coef[1])            # aの値\nb<- as.vector(relat.coef[2])            # bの値\nc<- as.vector(relat.coef[3])            # cの値\nx <- 10                                 # xの値\n\nrelat.y <- a / ( 1 + b * exp(c * x))    # 非線形の回帰モデル\n\nexpe_1 <- cbind(data,    # 実測値と予測値の表を作成\n                fitted(relat.nls))\n\nplot(year, pene, cex=1)  # 実測値の散布図を作成\nlines(year,              # x座標は年代\n      fitted(relat.nls), # y座標は予測値\n      col=\"RED\",         # 赤にする\n      lty=\"dotted\",      # ドットで描画\n      lwd=2)             # 太さは2\n\n\n\n",
+    "created" : 1488628004469.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2224186509",
+    "id" : "89FFB99D",
+    "lastKnownWriteTime" : 1488707233,
+    "last_content_update" : 1488707233520,
+    "path" : "~/r_sample/chap09/sec03/non_linear/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

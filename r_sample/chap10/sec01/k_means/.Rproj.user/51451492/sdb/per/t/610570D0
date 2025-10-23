@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "k.study <- kmeans(time,2)\nk.study$cluster  # 分類結果を取得\nk.study$centers  # クラスターの中心を取得\nk.study$size     # 各クラスター内の個体の数を取得\n\n# クラスター毎に色を変え散布図を描く\nplot(time, col = k.study$cluster)\n# クラスターの中心点を上描き\npoints(k.study$centers, col = 1:2, pch = 8, cex=2)\n\n",
+    "created" : 1496916388853.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "910490851",
+    "id" : "610570D0",
+    "lastKnownWriteTime" : 1488953656,
+    "last_content_update" : 1488953656,
+    "path" : "~/Downloads/r_sample/chap10/sec01/k_means/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

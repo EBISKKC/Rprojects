@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# access.csvをtblに代入\ntbl <- read.csv(\"access.csv\", encoding=\"UTF-8\")\n\n# 階級の幅をbyに代入\ncl <- 10\n# 最小値、最大値を求める\nfn <- fivenum(tbl$アクセス数)\n# 最小値の上位2桁で丸め、階級幅×2を引いてminに代入\nmin <- signif(fn[1], 2) - cl * 2\n# 最大値に階級幅×2を加えてmaxに代入\nmax <- fn[5] + cl * 2\n\nhist(\n  tbl$アクセス数,        # ヒストグラムにするデータを指定\n  breaks = seq(          # シーケンスを持つベクトルを作成\n    min,                 # 下限値\n    max,                 # 上限値\n    by = cl              # 階級の幅\n  ),\n  main = \"アクセス状況\", # タイトルを設定\n  xlab = \"アクセス数\",   # 横軸の項目名を設定\n  ylab = \"頻度\",         # 縦軸の項目名を設定\n  col=\"limegreen\"        # 棒グラフの色を設定\n)\n",
+    "created" : 1496908409291.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3581729126",
+    "id" : "869D4899",
+    "lastKnownWriteTime" : 1496908539,
+    "last_content_update" : 1496908539085,
+    "path" : "~/Downloads/r_sample/chap03/sec03/histogram2/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "file <- \"清涼飲料水売上.txt\" # 読み込むファイル名を設定\n\ndata <- read.delim(          # ファイルを読み込んでdataに格納\n  file,\n  header=T,                  # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"       # 文字コードをShift_JISに指定\n)\n\nvar_1<- c(\n  data[,1]                   # 1列目の変量をベクトルに代入\n)\n\nvar_2<- c(\n  data[,2]                   # 2列目の変量をベクトルに代入\n)\n\nplot(data)                   # 散布図を描く\n\ncoef <- cor(var_1, var_2)    # 相関係数を求める\n\n\n# 線形単回帰分析を実行\nsalse.lm <- lm(var_2~var_1, data=data)\n# 分析結果を表示\nsummary(salse.lm)\n\n# 散布図に回帰直線を引く\nplot(data)\nabline(salse.lm)\n\n# 分析結果の係数のみを表示する\nround(coefficients(salse.lm), 2)\n\n# 最高気温が30度のときの売上数を予測する\nexp_30dg = -760.877 + 33.741 * 30\n\n# 最高気温が31度のときの売上数を予測する\nexp_31dg = -760.877 + 33.741 * 31\n\n# 最高気温が36度のときの売上数を予測する\nexp_36dg = -760.877 + 33.741 * 36\n\n# 分析のもとデータと予測値、残差を一覧にする\nexp <- predict(salse.lm)           # 元データに対する予測値\nres <- residuals(salse.lm)         # データと予測値の残差\nview <- data.frame(data, exp, res) # データフレームにまとめる\n",
+    "created" : 1496910568416.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "435465665",
+    "id" : "E8CB43A5",
+    "lastKnownWriteTime" : 1488448430,
+    "last_content_update" : 1488448430,
+    "path" : "~/Downloads/r_sample/chap09/sec01/simple_linear/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
