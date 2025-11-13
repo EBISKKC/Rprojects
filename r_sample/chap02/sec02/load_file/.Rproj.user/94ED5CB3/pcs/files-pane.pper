@@ -1,0 +1,9 @@
+{
+    "path" : "~/r_sample/chap02/sec02/load_file",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

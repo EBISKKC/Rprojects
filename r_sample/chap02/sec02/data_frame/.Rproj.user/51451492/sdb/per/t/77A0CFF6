@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "branch <- c(\n          \"初台店\",\n          \"幡谷店\",\n          \"吉祥寺店\",\n          \"笹塚店\",\n          \"明大前店\"\n          )\n\nsales <- c(\n           2024,\n           2164,\n           6465,\n           2186,\n           2348\n          )\n\ndf <- data.frame(branch=branch, salses=sales)\n\ndf$branch # 列データを要素として取り出す\ndf[[1]]   # 列データを要素として取り出す\ndf[,1]    # 列データを要素として取り出す\ndf[1]     # 列データをリストとして取り出す\n\ndf[1,]    # 行データをリストとして取り出す\n\n",
+    "created" : 1496906103854.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2969862205",
+    "id" : "77A0CFF6",
+    "lastKnownWriteTime" : 1489359054,
+    "last_content_update" : 1489359054,
+    "path" : "~/Downloads/r_sample/chap02/sec02/data_frame/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

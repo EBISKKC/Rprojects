@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1496194110591.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CBA708B",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1496194110591,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "5B30E320",
+        "caption" : "freqtable",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=freqtable&cache_key=5B30E320",
+        "displayedObservations" : 9,
+        "environment" : "",
+        "object" : "freqtable",
+        "preview" : 0,
+        "totalObservations" : 9,
+        "variables" : 4
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

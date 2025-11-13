@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getSd <- function(x) {                  # 標準偏差を返す関数\n  return(                               # 戻り値を返す\n    sqrt(                               # 分散の平方根\n      sum((x - mean(x))^2) / length(x)) # 分散の計算式\n  )\n}\n\ndata <- read.table(           # テスト結果.txtをdataに代入\n  \"テスト結果.txt\",\n  header=T,                   # 1行目は列名であることを指定\n  fileEncoding=\"CP932\"        # 文字コードをShift_JISに指定\n)\n\nnum <- data$得点              # テスト結果の得点をベクトルに代入\nsdv <- getSd(num)             # 得点の標準偏差を求める\nmen <- mean(num)              # 得点の平均\ndev <- \n  (data$得点-men) / sdv*10+50 # 全員の偏差値を求める\n\ndata <- cbind(                # 偏差値を追加したデータフレームを生成\n  data,                       # もとのデータフレーム\n  data.frame(\"偏差値\" = dev)  # 偏差値のデータフレーム\n\n  )\n",
+    "created" : 1486626477952.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2973251500",
+    "id" : "A291D4D7",
+    "lastKnownWriteTime" : 1486629417,
+    "last_content_update" : 1486629417670,
+    "path" : "~/r_sample/chap05/sec02/deviation/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

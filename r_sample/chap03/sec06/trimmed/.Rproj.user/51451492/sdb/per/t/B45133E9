@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# 店舗別売上.txtをデータフレームとしてdataに代入\ndata <- read.table(\n                    \"店舗別売上.txt\",\n                    header=T,\n                    fileEncoding=\"CP932\"\n                  )\n# 平均を求める\naverage = mean(data$\"売上高_千円\")\n\n# ヒストグラムを作成\nhist(data$\"売上高_千円\")\n\n# 売上高が0のデータを2件追加\ndata = rbind(\n  data, \n  data.frame(店舗名=\"dummy\", 売上高_千円=0),# 1行ぶんのデータ\n  data.frame(店舗名=\"dummy\", 売上高_千円=0) # 1行ぶんのデータ\n)\n\n# 上側2件を除いたトリム平均を求める\ntrim = mean(\n  data$\"売上高_千円\", # 売上高の列を対象にする\n  trim = 0.1          # 上側と下側から10％ぶん除外する\n)\n",
+    "created" : 1496909257023.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4157440882",
+    "id" : "B45133E9",
+    "lastKnownWriteTime" : 1486103278,
+    "last_content_update" : 1486103278,
+    "path" : "~/Downloads/r_sample/chap03/sec06/trimmed/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

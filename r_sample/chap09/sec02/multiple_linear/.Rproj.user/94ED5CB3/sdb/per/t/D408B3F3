@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "###################################################\n# すべての説明変数を使用して重回帰分析\n###################################################\n# 線形単回帰分析を実行\nlm1 <- lm(var_1 ~\n            var_2 + var_3 + var_4 + var_5 + var_6,\n          data=data)\nsummary(lm1)                # 分析結果を表示\nround(coefficients(lm1), 2) # 係数を表示\n\n# 分析のもとになったデータと予測値、残差を一覧にする\nexp <- predict(lm1)         # 元データに対する予測値\nres <- residuals(lm1)       # データと予測値の残差\nview_lm1 <- data.frame(data[1], exp, res) # データフレームにまとめる\n\n",
+    "created" : 1488605742520.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "140637096",
+    "id" : "D408B3F3",
+    "lastKnownWriteTime" : 1488605863,
+    "last_content_update" : 1488605863854,
+    "path" : "~/r_sample/chap09/sec02/multiple_linear/script2.R",
+    "project_path" : "script2.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

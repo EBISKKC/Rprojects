@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "num <- \"-10\"\n\nif(is.numeric(num) & num < 0){            # numは実数型かつ負の値であるか\n    num <- num * -1                       # -1を掛けて正の値にする\n  } else if (is.numeric(num) & num > 0) { # numは実数型かつ正の値であるか\n    num <- num * -1                       # -1を掛けて負の値にする\n  } else {                                # どの条件も成立しない場合 \n    num <- as.numeric(num)                # numeric型に変換する\n}\n\n\n",
+    "created" : 1489369742628.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2449973959",
+    "id" : "E7AF9913",
+    "lastKnownWriteTime" : 1489376141,
+    "last_content_update" : 1489376141570,
+    "path" : "~/r_sample/chap02/sec03/ifstatement/script3.R",
+    "project_path" : "script3.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

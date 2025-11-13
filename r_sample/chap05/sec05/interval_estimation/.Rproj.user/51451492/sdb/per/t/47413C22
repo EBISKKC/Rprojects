@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "getDisper <- function(x) {                # 分散を返す関数\n  dev <- x - mean(x)                      # 偏差を求める\n  return(sum(dev^2) / length(x))          # 分散を返す\n}\n\ntest <- c(                                # テスト結果\n  75, 68, 96, 76, 84, 74, 64,\t94,\t77,\t82,\n  86,\t56,\t82,\t69,\t59,\t81,\t61,\t85,\t64,\t63,\n  68,\t79,\t61,\t57,\t63,\t89,\t74,\t63,\t71,\t69,\n  95,\t84,\t76\n  )\n\nm1 <- mean(test[1:5])                     # 平均\nd1 <- getDisper(test[1:5])                # 分散\n\nd2 <- var(test[1:5])                      # 不偏分散\n",
+    "created" : 1496909916736.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1339075237",
+    "id" : "47413C22",
+    "lastKnownWriteTime" : 1486783624,
+    "last_content_update" : 1486783624,
+    "path" : "~/Downloads/r_sample/chap05/sec05/interval_estimation/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

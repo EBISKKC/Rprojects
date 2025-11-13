@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "test <- c(3, 3, 4, 4, 5, 5, 5, 6, 7, 8)\nm    <- mean(test)\nv    <- var(test)",
+    "created" : 1496909944340.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2095536066",
+    "id" : "AE2205D8",
+    "lastKnownWriteTime" : 1486785718,
+    "last_content_update" : 1486785718,
+    "path" : "~/Downloads/r_sample/chap05/sec05/practice/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
